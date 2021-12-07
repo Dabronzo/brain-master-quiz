@@ -25,19 +25,20 @@
         </div>
     </div>
     <div class="game-area box">
-        <div id="question-area">
-            <h3 id="question">The questions will be made here</h3>
-            <div id="image-container">
+        <div id="stage-type-area">
+            <h3 id="stage-name">The questions will be made here</h3>
+            <div id="question-container">
                 <div id="enter-data">
                     <p>Enter your name to play</p>
                     <input id="player-name" type="text"><br>
-                    <button data-type="play" class="tutorial-btn">Play</button>
+                    <button id="start" data-type="play" class="tutorial-btn">Play</button>
+                    
                 </div>
-                <img id="image" src="/assets/images/quiz-opening.jpg" alt="openning for the quiz game">
             </div>
-            <div class="player-status">
-                <span>Player: </span><span id="player">Ayrton</span><br>
-                <span>Lifes: </span><span id="lifes"><i class="fas fa-heart"></i></span>
+            <div id="player-status" class = "hidden">
+                <span>Player: </span><span id="player"></span><br>
+                <span>Lifes: </span><span id="lifes"></span><br>
+                <button id="next" data-type="next-btn" class="tutorial-btn">Next</button>
 
             </div>
             
@@ -45,19 +46,19 @@
         </div>
     </div>
     <div class="multiple-choice box">
-        <button id="d-btn" class="info-answer-box btn">
+        <button data-type="d" class="info-answer-box btn">
             <h4>D</h4>
             <p>the answer text for this one</p>
         </button>
-        <button id="c-btn" class="info-answer-box btn">
+        <button data-type="c" class="info-answer-box btn">
             <h4>C</h4>
             <p>the answer text for this one</p>
         </button>
-        <button id="b-btn" class="info-answer-box btn">
+        <button data-type="b" class="info-answer-box btn">
             <h4>B</h4>
             <p>the answer text for this one</p>
         </button>
-        <button id="a-btn" class="info-answer-box">
+        <button data-type="a" class="info-answer-box btn">
             <h4>A</h4>
             <p>the answer text for this one</p>
         </button>
