@@ -11,39 +11,38 @@
 <body>
     <h2 class="heading">Quizz Game</h2>
     <div class="progress-area box">
-        <div class="stage music">
+        <div data-type="musicStage" class="stage music">
             <i class="fas fa-music"></i>
         </div>
-        <div class="stage movie">
+        <div data-type="moviesStage" class="stage movie">
             <i class="fas fa-film"></i>
         </div>
-        <div class="stage geo">
+        <div data-type="generalStage" class="stage geo">
             <i class="fas fa-atlas"></i>
         </div>
-        <div class="stage final">
+        <div data-type="finalStage" class="stage final">
             <i class="fas fa-skull-crossbones"></i>
         </div>
     </div>
     <div class="game-area box">
         <div id="stage-type-area">
             <h3 id="stage-name">The questions will be made here</h3>
-            <div id="question-container">
-                <div id="enter-data">
-                    <p>Enter your name to play</p>
-                    <input id="player-name" type="text"><br>
-                    <button id="start" data-type="play" class="tutorial-btn">Play</button>
+        </div>
+        <div id="question-container">
+            <div id="enter-data">
+                <p>Enter your name to play</p>
+                <input id="player-name" type="text"><br>
+                <button id="start" data-type="play" class="tutorial-btn">Play</button>
                     
-                </div>
             </div>
-            <div id="player-status" class = "hidden">
-                <span>Player: </span><span id="player"></span><br>
-                <span>Lifes: </span><span id="lifes"></span><br>
-                <button id="next" data-type="next-btn" class="tutorial-btn">Next</button>
-
-            </div>
+        </div>
+        <div id="player-status" class = "hidden">
+            <span>Player: </span><span id="player"></span><br>
+            <span>Lifes: </span><span id="lifes"></span><br>
             
 
         </div>
+        <button id="next" data-type="next-btn" class="tutorial-btn hidden">Next</button>
     </div>
     <div class="multiple-choice box">
         <button data-type="d" class="info-answer-box btn">

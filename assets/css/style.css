@@ -29,6 +29,7 @@ body{
     border: 4px solid;
     border-color:  #ff652f;
     color: #ff652f;
+    background-color: transparent;
 }
 
 .movie{
@@ -52,7 +53,7 @@ body{
 .game-area{
     background-color: #747474;
     border-radius: 8px;
-    height: 64vh;
+    height: 53vh;
     position: relative;
 }
 #player-status{
@@ -96,6 +97,7 @@ body{
     border: 4px solid;
     border-color: #272727;
     border-radius: 8px;
+    visibility: hidden;
     
 }
 .info-answer-box h4{
@@ -145,16 +147,17 @@ body{
     border: 4px solid;
     border-radius: 8px;
     border-color: #ff00ff;
-    transition: all 0.9s;
+    transition: all 0.5s;
 }
 
 #enter-data p{
     font-family: Poppins, sans-serif;
-    font-size: 120%;
+    font-size: 108%;
     letter-spacing: 1.2mm;
     font-weight: 1000;
     color: #fff;
     max-height: 251px;
+    animation:  tutorial 3s ease-in forwards;
 
 }
 
@@ -164,13 +167,26 @@ body{
 }
 
 .tutorial-btn{
+    color: #fff;
     padding: 10px;
     margin-top:5px;
-    margin-bottom:5px;
+    margin-bottom:14px;
     font-family: Poppins, sans-serif;
     font-size: 100%;
     letter-spacing: 0.9mm;
     font-weight: 1000;
+    background-color:#747474;
+    border: 4px solid;
+    border-radius: 8px;
+    border-color:#ff00ff;
+}
+.tutorial-btn:hover{
+    background-color: #ff00ff;
+    color: #252525;
+}
+
+#next{
+    float: right;
 }
 
 .hidden{
@@ -184,9 +200,7 @@ body{
     text-transform: lowercase;
     
 }
-.animated{
-    animation: tutorial 1.8s ease-in forwards;
-}
+
 @keyframes tutorial {
     from{opacity: 0;}
     to{opacity: 1;}
