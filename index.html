@@ -11,16 +11,16 @@
 <body>
     <h2 class="heading">Quizz Game</h2>
     <div class="progress-area box">
-        <div data-type="musicStage" class="stage music">
+        <div data-type="music" class="stage music">
             <i class="fas fa-music"></i>
         </div>
-        <div data-type="moviesStage" class="stage movie">
+        <div data-type="movies" class="stage movie">
             <i class="fas fa-film"></i>
         </div>
-        <div data-type="generalStage" class="stage geo">
+        <div data-type="geography" class="stage geo">
             <i class="fas fa-atlas"></i>
         </div>
-        <div data-type="finalStage" class="stage final">
+        <div data-type="final" class="stage final">
             <i class="fas fa-skull-crossbones"></i>
         </div>
     </div>
@@ -30,9 +30,10 @@
         </div>
         <div id="question-container">
             <div id="enter-data">
-                <p>Enter your name to play</p>
+                <p id="quest-para">Enter your name to play</p>
                 <input id="player-name" type="text"><br>
                 <button id="start" data-type="play" class="tutorial-btn">Play</button>
+                
                     
             </div>
         </div>
@@ -42,9 +43,11 @@
             
 
         </div>
-        <button id="next" data-type="next-btn" class="tutorial-btn hidden">Next</button>
+        
     </div>
-    <div class="multiple-choice box">
+    <div id="separator">
+    </div>
+    <div class="multiple-choice box hidden">
         <button data-type="d" class="info-answer-box btn">
             <h4>D</h4>
             <p>the answer text for this one</p>
