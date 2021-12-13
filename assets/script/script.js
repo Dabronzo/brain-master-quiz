@@ -3,210 +3,164 @@ document.addEventListener("DOMContentLoaded", function(){
 
     let allStageIcons = document.getElementsByClassName("stage");
     for (let stage of allStageIcons){
-        stage.innerHTML = '<i class="fas fa-lock"></i>'
+        stage.innerHTML = '<i class="fas fa-lock"></i>';
     }
-    let currentStage = "music";
 
     let startB = document.getElementById("start");
     startB.addEventListener('click', function(){
         console.log('starting the game');
-        displayTutorial();
+        startGame();
         
-    })
-    
+    });
+
         
 
-})
+});
 
-function theGame(playerName){
-    document.getElementById('next').style.visibility = 'hidden';
-    let textArea = document.getElementById('enter-data');
-    let allStageIcons = document.getElementsByClassName("stage")
-    let gameArea = document.querySelector('.game-area');
-    let name = playerName;
-    let buttons = document.getElementsByClassName('info-answer-box');
-    let currStage = "music";
-    gameArea.style.height = '35vh';
+/**
+ * Main function where the game runs
+ */
+function startGame(){
+    var lives = 3;
+    var counter = 0;
+    var currentStage = document.querySelector('.selected');
+    var allButtons = document.getElementsByClassName('info-answer-box');
+    var questionsList = getQuestionByType(currentStage.getAttribute('data-type'));
+    var stageTitles = document.getElementById('stage-name');
+    var stageIcon = document.querySelector('.music');
+    //initial setup for the music stage style
+    stageIcon.classList.add('music-on');
+    stageIcon.innerHTML = '<i class="fas fa-music"></i>';
+    stageTitles.style.visibility = 'visible';
+    stageTitles.classList.add('music-title');
+    stageTitles.innerHTML = currentStage.getAttribute('data-type');
 
-    updateStageIcons(currStage);
 
-    let lifes = 3;
-    console.log(lifes, "before");
-    let counter = 0;
-    let questList = getQuestionByType(currStage);
-    textArea.style.transition = 'all 0.5s';
+    displayQuestion(questionsList, counter);
 
-    udpatePlayeStats();
-
-    //Main game loops
-    displayQuestons(questList, counter);
-    for(let button of buttons){
+    for(let button of allButtons){
         button.addEventListener('click', function(){
-            if (this.getAttribute('data-type') === questList[counter].rightAnswer){
-                gotItRight();
-                //updateCounter(updateQuest, updateStage);
-            } else {
-                gotItWrong();
-                //updateCounter(updateQuest, updateStage);
+            let playerAnswer = false;
+            counter ++;
+           if (counter > 3){
+               counter = 0;
+           } else{
+            if(button.getAttribute('data-type') === questionsList[counter - 1].rightAnswer){
+                console.log('Got it Right');
+                playerAnswer = true;
+                questionTransfer(counter, playerAnswer, questionsList);
+
+            } else{
+                lives --;
+                if (lives > 0){
+                    questionTransfer(counter, playerAnswer, questionsList);
+                } else{
+                    alert("you are dead");
+                }
             }
+           }
+           
         })
     }
+}
 
-    //Game functions
+function checkStage(stage) {
+    console.log(stage.classList.contains('selected'));
+}
 
-    function gotItRight(){
-        document.querySelector('.multiple-choice').classList.add('hidden');
-        textArea.innerHTML = `<span id="right-check"><i class="far fa-check-circle"></i></span>`;
-        textArea.style.width = '6em';
-        setTimeout(function(){
-            updateCounter(updateQuest, updateStage);
-        }, 1000);
+function stageTransfer(questionsList, counter){
+    var stageToLoad = document.querySelector('.selected');
+    var textArea = document.getElementById('enter-data');
+    var title = document.getElementById('stage-name');
+    textArea.innerHTML = "<p id='quest-para'>Congratulations! Get ready for the Next Stage</p>";
+    if (stageToLoad.getAttribute('data-type') === 'movies'){
+        document.querySelector('.music').classList.remove('music-on');
+        stageToLoad.classList.add('movie-on');
+        stageToLoad.innerHTML = '<i class="fas fa-film"></i>';
+        title.classList.remove('music-title');
+        title.classList.add('movie-title');
+        title.innerHTML = 'movies';
+    } else if (stageToLoad.getAttribute('data-type') === "geography"){
+        document.querySelector('.movie').classList.remove('movie-on');
+        stageToLoad.classList.add('geo-on');
+        stageToLoad.innerHTML = '<i class="fas fa-atlas"></i>';
+        title.classList.remove('movie-title');
+        title.classList.add('geo-title');
+        title.innerHTML = 'geography';
+
     }
 
-    function gotItWrong(){
-        lifes --;
-        updateLifes();
-        document.querySelector('.multiple-choice').classList.add('hidden');
+    setTimeout(function(){
+        displayQuestion(questionsList, counter);
+    }, 3000);
+
+}
+
+/**
+ * Update the class "selected" of the stages and update the questions list
+ * of the main game
+ * @returns array with the questions of the next stage
+ */
+function updateStage(){
+    var allStages = document.getElementsByClassName('stage');
+    var currStage = document.querySelector('.selected');
+    var nextStage;
+    currStage.classList.remove('selected');
+    if((currStage !== allStages[allStages.length - 1])){
+        for(let i=0; i<allStages.length; i++){
+            if (allStages[i] === currStage){
+                nextStage = allStages[i + 1];
+                nextStage.classList.add('selected');
+                let nextQuestions = getQuestionByType(nextStage.getAttribute('data-type'));
+                return nextQuestions;
+            }
+        }
+    }
+}
+
+/**
+ * Display the section between the questions and set a time out to call the next question
+ * @param {the current counter} counter 
+ * @param {the buttom pressed for the player} playerAnswer 
+ * @param {list of the questions} questionsList 
+ */
+function questionTransfer(counter, playerAnswer, questionsList){
+    document.querySelector('.multiple-choice').classList.add('hidden');
+    var textArea = document.getElementById('enter-data');
+    textArea.style.width = '6em';
+    if (playerAnswer){
+        textArea.innerHTML = `<span id="right-check"><i class="far fa-check-circle"></i></span>`
+    } else{
         textArea.innerHTML = `<span id="wrong-check"><i class="far fa-times-circle"></i></span>`;
-        textArea.style.width = '6em';
-         setTimeout(function(){
-            updateCounter(updateQuest, updateStage);
-        }, 1000);
-
-
     }
 
-
-
-    function updateCounter(callBack, callBackStage){
-        counter ++;
-        if (counter >= 3){
-            callBackStage()
-        } else{
-            callBack()
-        }
-
-    }
-
-    function updateQuest(){
-        displayQuestons(questList, counter);
-    }
-
-    function updateStage(){
-        counter = 0;
-        console.log('here the stage is updated');
-        if(currStage === "music"){
-            currStage = "movies";
-            updateStageIcons(currStage);
-            questList = getQuestionByType(currStage);
-        } else if ( currStage === "movies"){
-            currStage = "geography";
-            updateStageIcons(currStage);
-            questList = getQuestionByType(currStage);
-        } else  if (currStage === "geography"){
-            currStage = "final";
-            updateStageIcons(currStage);
-            questList = getQuestionByType(currStage);
-        }
-        displayQuestons(questList, counter);
-    }
-
-    function updateLifes(){
-        document.getElementById('lifes').innerHTML = "";
-        for (i=0; i < lifes;i++){
-            document.getElementById('lifes').innerHTML += `<i class="fas fa-heart"></i>`;
-        }
-        checkAlive();
-    }
-
-    function checkAlive(){
-        if (lifes === 0){
-            alert('You are Dead');
-        }
-    }
-
-    function udpatePlayeStats(player){
-        document.getElementById('player').innerHTML = player;
-        document.getElementById("player-status").classList.remove('hidden');
-        document.getElementById('player').innerHTML = name;
-        updateLifes();
-    }
-
+    setTimeout(function(){
+        displayQuestion(questionsList, counter);
+    }, 1000);
 }
 
-function updateStageIcons (stage){
-    let stageTitle = document.getElementById('stage-name');
-    let musicIcon = document.querySelector('.music');
-    let moviesIcon = document.querySelector('.movie');
-    let geographyIcon = document.querySelector('.geo');
-    let finalIcon = document.querySelector('.final');
-
-    console.log(stage);
-    stageTitle.innerHTML = `${stage}`;
-    stageTitle.style.textTransform = 'uppercase';
-    
-
-    if (stage === 'music'){
-        stageTitle.style.color = '#ff652f';
-        stageTitle.style.textShadow = '0 0 0.8em #ff652f, 0 0 0.1em #252525';
-        musicIcon.innerHTML = '<i class="fas fa-music"></i>';
-        musicIcon.style.color = '#252525';
-        musicIcon.style.backgroundColor = '#ff652f';
-        musicIcon.style.boxShadow = '0 0 0.7em #ff652f';
-    } else if (stage == 'movies'){
-        musicIcon.style.color = '#ff652f';
-        musicIcon.style.backgroundColor = '#252525';
-        musicIcon.style.boxShadow = 'none';
-        stageTitle.style.color = '#ffe400';
-        stageTitle.style.textShadow = '0 0 0.8em #ffe400, 0 0 0.1em #fff';
-        moviesIcon.innerHTML = '<i class="fas fa-film"></i>';
-        moviesIcon.style.color = '#252525';
-        moviesIcon.style.backgroundColor = '#ffe400';
-        moviesIcon.style.boxShadow = '0 0 0.7em #ffe400';
-    } else if( stage === 'geography'){
-        moviesIcon.style.color = '#ffe400';
-        moviesIcon.style.backgroundColor = '#252525';
-        moviesIcon.style.boxShadow = 'none';
-        geographyIcon.innerHTML = '<i class="fas fa-atlas"></i>';
-        geographyIcon.style.color = '#252525';
-        geographyIcon.style.backgroundColor = '#14a76c';
-        geographyIcon.style.boxShadow = '0 0 0.7em #14a76c';
-        stageTitle.style.color = '#14a76c';
-        stageTitle.style.textShadow = '0 0 0.8em #14a76c, 0 0 0.1em #252525';
-    } else if( stage === 'final'){
-        geographyIcon.style.color = '#14a76c';
-        geographyIcon.style.backgroundColor = '#252525';
-        geographyIcon.style.boxShadow = 'none';
-        finalIcon.innerHTML = '<i class="fas fa-flag-checkered"></i>';
-        finalIcon.style.color = '#252525';
-        finalIcon.style.backgroundColor = '#E26188';
-        finalIcon.style.boxShadow = '0 0 0.7em #E26188';
-        stageTitle.style.color = '#E26188';
-        stageTitle.style.textShadow = '0 0 0.8em #E26188, 0 0 0.1em #252525';
-
-    }
-
-}
-
-function displayQuestons(questions, indx){
+/**
+ * Display the questions
+ * @param {List of the questions} listQuestions 
+ * @param {current coutner for the questions displayed} indx 
+ */
+function displayQuestion(listQuestions, indx){
     document.querySelector('.multiple-choice').classList.remove('hidden');
-    let questArea = document.getElementById('enter-data');
-    let btnAnswers = document.getElementsByClassName('info-answer-box');
+    var questArea = document.getElementById('enter-data');
+    var btnAnswers = document.getElementsByClassName('info-answer-box');
     questArea.style.width = '50em';
     questArea.style.animation = 'displayAni 1.1s ease-in forwards';
-    questArea.innerHTML = `<p id="quest-para">${questions[indx].question}</p>`;
+    questArea.innerHTML = `<p id="quest-para">${listQuestions[indx].question}</p>`;
 
-    let questParagraph = document.getElementById("quest-para");
+    var questParagraph = document.getElementById("quest-para");
     questParagraph.style.animation = "displayAni 1s ease-in forwards";
     for(let i=0;i < btnAnswers.length; i++){
-        btnAnswers[i].innerHTML = `<h4>${questions[indx].answers[i]}</h4>`;
+        btnAnswers[i].innerHTML = `<h4>${listQuestions[indx].answers[i]}</h4>`;
     }
-
 }
 
-
 function getQuestionByType (type){
-    let questionArray = [];
+    var questionArray = [];
     const allQuestions =[
         {question: "what instrument did <strong>Paul Mccartney</strong> play on The Beatles?", type: "music", answers: ["bass", "keyboard", "drums", "banjo"], rightAnswer: "d" },
         {question: "Which one of the following musicians used to be a <strong>teacher?</strong>", type: "music", answers: ["Michel Jackson", "Dave Grohl", "Sting", "Eminen"], rightAnswer: "b"},
@@ -224,31 +178,8 @@ function getQuestionByType (type){
 
     for (let question of allQuestions){
         if (question.type === type){
-            questionArray.push(question)
+            questionArray.push(question);
         }
     }
     return questionArray; 
 }
-
-function displayTutorial(){
-    let playerName = document.getElementById('player-name').value;
-    let tutoArea = document.getElementById('enter-data');
-    let stageName = document.getElementById('stage-name');
-    tutoArea.style.width = '50em';
-    tutoArea.style.transition = 'none';
-    tutoArea.innerHTML = `<p id="quest-para">The Quizz is divided in 4 stages <i class="fas fa-music"></i>, <i class="fas fa-film"></i>, <i class="fas fa-atlas"></i> and <i class="fas fa-skull-crossbones"></i></p>
-                          <p id="quest-para">Each one has 3 questions of multiple choice</p>
-                          <p id="quest-para">You start with 3 <i class="fas fa-heart"></i>, each wrong question you loose one</p>
-                          <p id="quest-para">press the button below with your answer</p>
-                          <p id="quest-para">Good Luck!</p>
-                          <button id="next" data-type="next-btn" class="tutorial-btn hidden">Next</button>`;
-    let nextbtn = document.getElementById('next');
-    nextbtn.classList.remove('hidden');
-    stageName.style.visibility = 'visible';
-    stageName.innerHTML = "tutorial";
-    stageName.style.color = '#fff';
-    nextbtn.addEventListener('click', function(){
-       theGame(playerName);
-    })
-}
-

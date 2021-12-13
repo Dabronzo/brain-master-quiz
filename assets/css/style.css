@@ -63,7 +63,19 @@ body{
     color: #ff652f;
     background-color: transparent;
 
-    /*box-shadow: 0 0 0.7em #ff652f;*/
+}
+
+.music-on{
+    color: #252525;
+    background-color: #ff652f;
+    box-shadow: 0 0 0.7em #ff652f;
+
+}
+
+.music-title{
+    color: #ff652f;
+    text-shadow: 0 0 0.8em #ff652f, 0 0 0.1em #252525;
+    
 }
 
 .movie{
@@ -72,10 +84,31 @@ body{
     color: #ffe400;
 }
 
+.movie-on{
+    color: #252525;
+    background-color:#ffe400;
+    box-shadow: 0 0 0.7em #ffe400;
+}
+.movie-title{
+    color:#ffe400;
+    text-shadow: 0 0 0.8em #ffe400, 0 0 0.1em #fff;
+}
+
 .geo{
     border: 4px solid;
     border-color:  #14a76c;
     color: #14a76c;
+}
+
+.geo-on{
+    color: #252525;
+    background-color: #14a76c;
+    box-shadow: 0 0 0.7em #14a76c;
+}
+
+.geo-title{
+    color:#14a76c;
+    text-shadow: 0 0 0.8em #14a76c, 0 0 0.1em #252525;
 }
 
 .final{
@@ -98,6 +131,7 @@ body{
     font-size: 2rem;
     visibility: hidden;
     letter-spacing: 1.05mm;
+    text-transform: uppercase;
 }
 
 /*--- General Game Area --*/
