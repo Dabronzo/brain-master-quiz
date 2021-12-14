@@ -30,13 +30,16 @@ function startGame(){
     var stageTitles = document.getElementById('stage-name');
     var stageIcon = document.querySelector('.music');
     var nextButton = document.getElementById('next');
-
+    var playerName = document.getElementById('player-name').value;
     //initial setup for the music stage style
     stageIcon.classList.add('music-on');
     stageIcon.innerHTML = '<i class="fas fa-music"></i>';
     stageTitles.style.visibility = 'visible';
     stageTitles.classList.add('music-title');
     stageTitles.innerHTML = currentStage.getAttribute('data-type');
+    //set the  initial player stats for the game
+    document.getElementById('player').textContent = playerName;
+    updatePlayerLives(lives);
 
     //display the first question of music stage
     displayQuestion(questionsList, counter);
@@ -58,6 +61,7 @@ function startGame(){
 
             } else{
                 lives --;
+                updatePlayerLives(lives);
                 if (lives > 0){
                     questionTransfer(counter, playerAnswer, questionsList);
                 } else{
@@ -68,6 +72,21 @@ function startGame(){
     }
 }
 
+/**
+ * take the number of lives of the player and display on the game area
+ * @param {the number of lives of the player} lives 
+ */
+function updatePlayerLives(lives){
+    document.getElementById('lifes').innerHTML = "";
+    for (let i=0; i < lives;i++){
+        document.getElementById('lifes').innerHTML += `<i class="fas fa-heart"></i>`;
+    }
+}
+
+/**
+ * Handle the transfer to the next stage show the Next button and
+ * check if the game have reached the end
+ */
 function stageTransfer() {
     var currentStage = document.querySelector('.selected');
     console.log(currentStage.getAttribute('data-type'));
@@ -75,6 +94,8 @@ function stageTransfer() {
     if (currentStage.getAttribute('data-type') !== "final"){
         document.getElementById('next').classList.remove('hidden');
         textArea.innerHTML = "<p id='quest-para'>Congratulations! Get ready for the Next Stage</p>";
+        textArea.style.width = '50em';
+
     } else {
         console.log('End of the Game');
     }
