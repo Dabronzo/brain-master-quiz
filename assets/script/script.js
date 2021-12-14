@@ -72,16 +72,12 @@ function startGame(){
             if(button.innerHTML === questionsList[counter - 1].rightAnswer){
                 console.log('Got it Right');
                 playerAnswer = true;
-                questionTransfer(counter, playerAnswer, questionsList);
+                questionTransfer(counter, playerAnswer, questionsList, lives);
 
             } else{
                 lives --;
                 updatePlayerLives(lives);
-                if (lives > 0){
-                    questionTransfer(counter, playerAnswer, questionsList);
-                } else{
-                    displayDead();
-                }
+                questionTransfer(counter, playerAnswer, questionsList, lives);
             }
         })
     }
@@ -120,7 +116,7 @@ function displayDead(){
     document.getElementById('stage-name').style.visibility = 'hidden';
     document.getElementById('play-again').classList.remove('hidden');
     var textArea = document.getElementById('enter-data');
-    textArea.innerHTML = "<p id='quest-para'>Sorry You've Lost the Game</p><br><span id='wrong-check'><i class='far fa-times-circle'></i></span>";
+    textArea.innerHTML = "<p id='quest-para'>Sorry You've Lost the Game</p>";
 
 }
 
@@ -227,7 +223,7 @@ function updateStageQuestions(){
  * @param {the buttom pressed for the player} playerAnswer 
  * @param {list of the questions} questionsList 
  */
-function questionTransfer(counter, playerAnswer, questionsList){
+function questionTransfer(counter, playerAnswer, questionsList, lives){
     document.querySelector('.multiple-choice').classList.add('hidden');
     var textArea = document.getElementById('enter-data');
     document.getElementById('player-status').classList.add('hidden');
@@ -239,11 +235,15 @@ function questionTransfer(counter, playerAnswer, questionsList){
     }
 
     setTimeout(function(){
-       if(counter === questionsList.length){
-           stageTransfer();
-       } else{
-           displayQuestion(questionsList, counter);
-       }
+      if(lives !== 0){
+        if(counter === questionsList.length){
+            stageTransfer();
+        } else{
+            displayQuestion(questionsList, counter);
+        }
+      } else{
+          displayDead();
+      }
     }, 2000);
 
 }
