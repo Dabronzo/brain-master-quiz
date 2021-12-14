@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function(){
  * Main function where the game runs
  */
 function startGame(){
+    document.getElementById('player-status').classList.remove('hidden');
     var lives = 3;
     var counter = 0;
     var currentStage = document.querySelector('.selected');
@@ -28,6 +29,8 @@ function startGame(){
     var questionsList = getQuestionByType(currentStage.getAttribute('data-type'));
     var stageTitles = document.getElementById('stage-name');
     var stageIcon = document.querySelector('.music');
+    var nextButton = document.getElementById('next');
+
     //initial setup for the music stage style
     stageIcon.classList.add('music-on');
     stageIcon.innerHTML = '<i class="fas fa-music"></i>';
@@ -35,16 +38,19 @@ function startGame(){
     stageTitles.classList.add('music-title');
     stageTitles.innerHTML = currentStage.getAttribute('data-type');
 
-
+    //display the first question of music stage
     displayQuestion(questionsList, counter);
 
+    nextButton.addEventListener('click', function() {
+        counter = 0;
+        questionsList = updateStageQuestions();
+        updateStageIcons();
+        displayQuestion(questionsList, counter)
+    })
     for(let button of allButtons){
         button.addEventListener('click', function(){
             let playerAnswer = false;
             counter ++;
-           if (counter > 3){
-               counter = 0;
-           } else{
             if(button.getAttribute('data-type') === questionsList[counter - 1].rightAnswer){
                 console.log('Got it Right');
                 playerAnswer = true;
@@ -58,17 +64,27 @@ function startGame(){
                     alert("you are dead");
                 }
             }
-           }
-           
         })
     }
 }
 
-function checkStage(stage) {
-    console.log(stage.classList.contains('selected'));
+function stageTransfer() {
+    var currentStage = document.querySelector('.selected');
+    console.log(currentStage.getAttribute('data-type'));
+    var textArea = document.getElementById('enter-data');
+    if (currentStage.getAttribute('data-type') !== "final"){
+        document.getElementById('next').classList.remove('hidden');
+        textArea.innerHTML = "<p id='quest-para'>Congratulations! Get ready for the Next Stage</p>";
+    } else {
+        console.log('End of the Game');
+    }
 }
 
-function stageTransfer(questionsList, counter){
+/**
+ * When called takes the element selected and place as the stage to load
+ * update the icons and title for the stage
+ */
+function updateStageIcons(){
     var stageToLoad = document.querySelector('.selected');
     var textArea = document.getElementById('enter-data');
     var title = document.getElementById('stage-name');
@@ -87,12 +103,7 @@ function stageTransfer(questionsList, counter){
         title.classList.remove('movie-title');
         title.classList.add('geo-title');
         title.innerHTML = 'geography';
-
     }
-
-    setTimeout(function(){
-        displayQuestion(questionsList, counter);
-    }, 3000);
 
 }
 
@@ -101,7 +112,7 @@ function stageTransfer(questionsList, counter){
  * of the main game
  * @returns array with the questions of the next stage
  */
-function updateStage(){
+function updateStageQuestions(){
     var allStages = document.getElementsByClassName('stage');
     var currStage = document.querySelector('.selected');
     var nextStage;
@@ -114,6 +125,7 @@ function updateStage(){
                 let nextQuestions = getQuestionByType(nextStage.getAttribute('data-type'));
                 return nextQuestions;
             }
+            
         }
     }
 }
@@ -135,7 +147,11 @@ function questionTransfer(counter, playerAnswer, questionsList){
     }
 
     setTimeout(function(){
-        displayQuestion(questionsList, counter);
+       if(counter === questionsList.length){
+           stageTransfer();
+       } else{
+           displayQuestion(questionsList, counter);
+       }
     }, 1000);
 }
 
@@ -146,8 +162,12 @@ function questionTransfer(counter, playerAnswer, questionsList){
  */
 function displayQuestion(listQuestions, indx){
     document.querySelector('.multiple-choice').classList.remove('hidden');
+    var nextBtn = document.getElementById('next');
     var questArea = document.getElementById('enter-data');
     var btnAnswers = document.getElementsByClassName('info-answer-box');
+    if(!nextBtn.classList.contains("hidden")){
+        nextBtn.classList.add('hidden');
+    }
     questArea.style.width = '50em';
     questArea.style.animation = 'displayAni 1.1s ease-in forwards';
     questArea.innerHTML = `<p id="quest-para">${listQuestions[indx].question}</p>`;
