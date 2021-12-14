@@ -1,10 +1,4 @@
 document.addEventListener("DOMContentLoaded", function(){
-    
-
-    let allStageIcons = document.getElementsByClassName("stage");
-    for (let stage of allStageIcons){
-        stage.innerHTML = '<i class="fas fa-lock"></i>';
-    }
 
     let startB = document.getElementById("start");
     startB.addEventListener('click', function(){
@@ -46,6 +40,8 @@ function startGame(){
     //display the first question of music stage
     displayQuestion(questionsList, counter);
 
+    //Listeners
+    //restore the game stage when clicked
     playAgain.addEventListener('click', function(){
         counter = 0;
         questionsList = getQuestionByType('music');
@@ -60,12 +56,14 @@ function startGame(){
         displayQuestion(questionsList, counter);
     })
 
+    //button to change states
     nextButton.addEventListener('click', function() {
         counter = 0;
         questionsList = updateStageQuestions();
         updateStageIcons();
         displayQuestion(questionsList, counter)
     })
+    // multiple choice buttons
     for(let button of allButtons){
         button.addEventListener('click', function(){
             let playerAnswer = false;
@@ -93,7 +91,10 @@ function startGame(){
  * and for style of the title stages
  */
 function restetIcons(){
-    var allStageIcons = document.getElementsByClassName("stage");
+    let allStageIcons = document.getElementsByClassName("stage");
+    for (let stage of allStageIcons){
+        stage.innerHTML = '<i class="fas fa-lock"></i>';
+    }
     var title = document.getElementById('stage-name');
     for (let stage of allStageIcons){
         if(stage.classList.contains('selected')){
@@ -142,15 +143,18 @@ function updatePlayerLives(lives){
  */
 function stageTransfer() {
     var currentStage = document.querySelector('.selected');
-    console.log(currentStage.getAttribute('data-type'));
     var textArea = document.getElementById('enter-data');
+    console.log(currentStage.getAttribute('data-type'));
+    textArea.style.width = '50em';
     if (currentStage.getAttribute('data-type') !== "final"){
         document.getElementById('next').classList.remove('hidden');
         textArea.innerHTML = "<p id='quest-para'>Congratulations! Get ready for the Next Stage</p>";
-        textArea.style.width = '50em';
+        
 
     } else {
-        console.log('End of the Game');
+        textArea.innerHTML = "<p id='quest-para'>Congratulations! You've completed the Game</p>";
+        document.getElementById('play-again').classList.remove('hidden');
+        document.getElementById('stage-name').style.visibility = 'hidden';
     }
 }
 
