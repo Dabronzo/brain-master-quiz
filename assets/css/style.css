@@ -163,7 +163,12 @@ body{
     height: 3rem;
 }
 #next{
-    margin-bottom: 0.2em;
+    margin-bottom: -0.8em;
+    float: right;
+    margin-right: -5rem;
+    position: absolute;
+    left: 9rem;
+    bottom: 1rem;
 }
 .tutorial-btn{
     color: #fff;
@@ -189,7 +194,7 @@ body{
     width: 11rem;
     position: absolute;
     right: 5rem;
-    bottom:1rem;
+    bottom: 1rem;
     color: black;
     letter-spacing: 1.2mm;
     font-weight: bolder;
@@ -225,14 +230,8 @@ body{
     border-color: #252525;
     border-radius: 8px;
     background-image: linear-gradient(to right, #ff00ff , #14a76c);
-}
-
-.info-answer-box::before{
-    content: attr(data-type);
-    font-size: 1.2em;
+    font-size: 120%;
     color: #fff;
-    text-transform: uppercase;
-    font-weight: 900;
 }
 
 .info-answer-box:hover{
@@ -243,8 +242,7 @@ body{
 .info-answer-box h4{
     margin-top: 0.2rem;
     margin-bottom: 0.2rem;
-    font-size: 120%;
-    color: #fff;
+    
     text-transform: capitalize;
 }
 .info-answer-box p{
@@ -282,7 +280,7 @@ body{
     font-weight: 1000;
     color: #fff;
     max-height: 251px;
-    animation: displayAni 3s ease-in forwards;
+    animation: displayAni 1s ease-in forwards;
 
 }
 
@@ -309,4 +307,8 @@ body{
 #wrong-check{
     font-size: 500%;
     color: #a0311b;
+}
+.red{
+    color: #a0311b;
+    font-size: 150%;
 }

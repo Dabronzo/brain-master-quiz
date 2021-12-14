@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function(){
  */
 function startGame(){
     document.getElementById('player-status').classList.remove('hidden');
+    document.querySelector('.game-area').style.height = '40vh';
     var lives = 3;
     var counter = 0;
     var currentStage = document.querySelector('.selected');
@@ -68,7 +69,7 @@ function startGame(){
         button.addEventListener('click', function(){
             let playerAnswer = false;
             counter ++;
-            if(button.getAttribute('data-type') === questionsList[counter - 1].rightAnswer){
+            if(button.innerHTML === questionsList[counter - 1].rightAnswer){
                 console.log('Got it Right');
                 playerAnswer = true;
                 questionTransfer(counter, playerAnswer, questionsList);
@@ -142,6 +143,7 @@ function updatePlayerLives(lives){
  * check if the game have reached the end
  */
 function stageTransfer() {
+    document.getElementById('player-status').classList.remove('hidden');
     var currentStage = document.querySelector('.selected');
     var textArea = document.getElementById('enter-data');
     console.log(currentStage.getAttribute('data-type'));
@@ -228,11 +230,12 @@ function updateStageQuestions(){
 function questionTransfer(counter, playerAnswer, questionsList){
     document.querySelector('.multiple-choice').classList.add('hidden');
     var textArea = document.getElementById('enter-data');
-    textArea.style.width = '6em';
+    document.getElementById('player-status').classList.add('hidden');
     if (playerAnswer){
-        textArea.innerHTML = `<span id="right-check"><i class="far fa-check-circle"></i></span>`
+        textArea.style.width = '6em';
+        textArea.innerHTML = `<span id="right-check"><i class="far fa-check-circle"></i></span>`;
     } else{
-        textArea.innerHTML = `<span id="wrong-check"><i class="far fa-times-circle"></i></span>`;
+        textArea.innerHTML = `<span id="wrong-check"><i class="far fa-times-circle"></i></span><br><p id="quest-para">The right answer is <span class="red">${questionsList[counter - 1].rightAnswer}</span></p>`;
     }
 
     setTimeout(function(){
@@ -241,7 +244,8 @@ function questionTransfer(counter, playerAnswer, questionsList){
        } else{
            displayQuestion(questionsList, counter);
        }
-    }, 1000);
+    }, 2000);
+
 }
 
 /**
@@ -264,25 +268,28 @@ function displayQuestion(listQuestions, indx){
     var questParagraph = document.getElementById("quest-para");
     questParagraph.style.animation = "displayAni 1s ease-in forwards";
     for(let i=0;i < btnAnswers.length; i++){
-        btnAnswers[i].innerHTML = `<h4>${listQuestions[indx].answers[i]}</h4>`;
+        btnAnswers[i].innerHTML = `${listQuestions[indx].answers[i]}`;
+    }
+    if(document.getElementById('player-status').classList.contains('hidden')){
+        document.getElementById('player-status').classList.remove('hidden');
     }
 }
 
 function getQuestionByType (type){
     var questionArray = [];
     const allQuestions =[
-        {question: "what instrument did <strong>Paul Mccartney</strong> play on The Beatles?", type: "music", answers: ["bass", "keyboard", "drums", "banjo"], rightAnswer: "d" },
-        {question: "Which one of the following musicians used to be a <strong>teacher?</strong>", type: "music", answers: ["Michel Jackson", "Dave Grohl", "Sting", "Eminen"], rightAnswer: "b"},
-        {question: "Which country the band <strong>AC/DC</strong> is from?", type: "music", answers: ["USA", "England", "South Africa", "Australia"], rightAnswer: "a"},
-        {question: "How many oscars did the movie <strong>Titanic</strong> win", type: "movies", answers: ["21 Oscars", "11 Oscars", "14 Oscars", "9 Oscars"], rightAnswer: "c"},
-        {question: "Where were The Lord of the Rings movies filmed?", type: "movies", answers: ["Ireland", "Iceland", "New Zealand", "Australia"], rightAnswer: "b"},
-        {question: "what is the <strong>second</strong> rule of fight club", type: "movies", answers: ["don't talk about the fight club", "don't punch on the balls", "if is your 1st night you fight", "every fight is to death" ], rightAnswer: "d"},
-        {question: "What is the capital of Australia", type: "geography", answers: ["Sydney", "Viena", "Melbourne", "Canberra"], rightAnswer: "a"},
-        {question: "What river runs through Baghdad?", type: "geography", answers: ["Niko", "Tigris", "Jordam", "Euphrates"], rightAnswer: "c"},
-        {question: "In what country can you visit Machu Picchu?", type: "geography", answers: ["Chile", "Argentina", "Brazil", "Peru"], rightAnswer: "a"},
-        {question: "What is Joe Biden's middle name?", type: "final", answers: ["Steven", "Murray", "Robinette", "Williams"], rightAnswer: "b"},
-        {question: "How many letter tiles are there in a game of Scrabble?", type: "final", answers: ["100 tiles", "50 tiles", "150 tiles", "200 tiles"], rightAnswer: "d"},
-        {question: "What is the spiciest chilli in the world?", type: "final", answers: ["Thai Pepper", "Naga Jolokia", "Komodo Dragon", "Carolina Reaper"], rightAnswer: "a"}
+        {question: "what instrument did <strong>Paul Mccartney</strong> play on The Beatles?", type: "music", answers: ["bass", "keyboard", "drums", "banjo"], rightAnswer: "bass" },
+        {question: "Which one of the following musicians used to be a <strong>teacher?</strong>", type: "music", answers: ["Michel Jackson", "Dave Grohl", "Sting", "Eminen"], rightAnswer: "Sting"},
+        {question: "Which country the band <strong>AC/DC</strong> is from?", type: "music", answers: ["USA", "England", "South Africa", "Australia"], rightAnswer: "Australia"},
+        {question: "How many oscars did the movie <strong>Titanic</strong> win", type: "movies", answers: ["21 Oscars", "11 Oscars", "14 Oscars", "9 Oscars"], rightAnswer: "11 Oscars"},
+        {question: "Where were The Lord of the Rings movies filmed?", type: "movies", answers: ["Ireland", "Iceland", "New Zealand", "Australia"], rightAnswer: "New Zealand"},
+        {question: "what is the <strong>second</strong> rule of fight club", type: "movies", answers: ["don't talk about the fight club", "don't punch on the balls", "if is your 1st night you fight", "every fight is to death" ], rightAnswer: "don't talk about the fight club"},
+        {question: "What is the capital of Australia", type: "geography", answers: ["Sydney", "Viena", "Melbourne", "Canberra"], rightAnswer: "Canberra"},
+        {question: "What river runs through Baghdad?", type: "geography", answers: ["Niko", "Tigris", "Jordam", "Euphrates"], rightAnswer: "Tigris"},
+        {question: "In what country can you visit Machu Picchu?", type: "geography", answers: ["Chile", "Argentina", "Brazil", "Peru"], rightAnswer: "Peru"},
+        {question: "What is Joe Biden's middle name?", type: "final", answers: ["Steven", "Murray", "Robinette", "Williams"], rightAnswer: "Robinette"},
+        {question: "How many letter tiles are there in a game of Scrabble?", type: "final", answers: ["100 tiles", "50 tiles", "150 tiles", "200 tiles"], rightAnswer: "100 tiles"},
+        {question: "What is the spiciest chilli in the world?", type: "final", answers: ["Thai Pepper", "Naga Jolokia", "Komodo Dragon", "Carolina Reaper"], rightAnswer: "Carolina Reaper"}
     ];
 
     for (let question of allQuestions){
