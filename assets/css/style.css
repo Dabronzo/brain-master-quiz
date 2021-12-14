@@ -187,6 +187,7 @@ body{
 .tutorial-btn:hover{
     background-color: #ff00ff;
     color: #252525;
+    cursor: pointer;
 }
 
 /*--Player Stats/Lifes--*/
@@ -310,5 +311,5 @@ body{
 }
 .red{
     color: #a0311b;
-    font-size: 150%;
+    font-size: 120%;
 }
