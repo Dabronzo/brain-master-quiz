@@ -78,18 +78,18 @@ body{
     
 }
 
-.movie{
+.movies{
     border: 4px solid;
     border-color:  #ffe400;
     color: #ffe400;
 }
 
-.movie-on{
+.movies-on{
     color: #252525;
     background-color:#ffe400;
     box-shadow: 0 0 0.7em #ffe400;
 }
-.movie-title{
+.movies-title{
     color:#ffe400;
     text-shadow: 0 0 0.8em #ffe400, 0 0 0.1em #fff;
 }
@@ -145,6 +145,12 @@ body{
 }
 
 /*-- Buttons for Tutorial --*/
+#play-again{
+    position: absolute;
+    top: 0;
+    bottom:0;
+    height: 3rem;
+}
 #next{
     margin-bottom: 0.2em;
 }

@@ -31,6 +31,8 @@ function startGame(){
     var stageIcon = document.querySelector('.music');
     var nextButton = document.getElementById('next');
     var playerName = document.getElementById('player-name').value;
+    var playAgain = document.getElementById('play-again');
+
     //initial setup for the music stage style
     stageIcon.classList.add('music-on');
     stageIcon.innerHTML = '<i class="fas fa-music"></i>';
@@ -43,6 +45,16 @@ function startGame(){
 
     //display the first question of music stage
     displayQuestion(questionsList, counter);
+
+    playAgain.addEventListener('click', function(){
+        counter = 0;
+        questionsList = getQuestionByType('music');
+        lives = 3;
+        restetIcons();
+        currentStage = document.querySelector('music');
+
+
+    })
 
     nextButton.addEventListener('click', function() {
         counter = 0;
@@ -65,11 +77,35 @@ function startGame(){
                 if (lives > 0){
                     questionTransfer(counter, playerAnswer, questionsList);
                 } else{
-                    alert("you are dead");
+                    displayDead();
                 }
             }
         })
     }
+}
+
+function restetIcons(){
+    let allStageIcons = document.getElementsByClassName("stage");
+    for (let stage of allStageIcons){
+        if(stage.classList.contains('selected')){
+            let stageType = stage.getAttribute('data-type');
+            console.log(stageType);
+            stage.classList.remove(`${stageType}-on`);
+            stage.classList.remove('selected');
+        }
+    }
+    
+}
+
+/**
+ * called when the player runs out lives
+ * display a screen when you arre dead and a button to play again
+ */
+function displayDead(){
+    document.getElementById('play-again').classList.remove('hidden');
+    var textArea = document.getElementById('enter-data');
+    textArea.innerHTML = "<p id='quest-para'>Sorry You've Lost the Game</p>";
+
 }
 
 /**
@@ -107,21 +143,19 @@ function stageTransfer() {
  */
 function updateStageIcons(){
     var stageToLoad = document.querySelector('.selected');
-    var textArea = document.getElementById('enter-data');
     var title = document.getElementById('stage-name');
-    textArea.innerHTML = "<p id='quest-para'>Congratulations! Get ready for the Next Stage</p>";
     if (stageToLoad.getAttribute('data-type') === 'movies'){
         document.querySelector('.music').classList.remove('music-on');
-        stageToLoad.classList.add('movie-on');
+        stageToLoad.classList.add('movies-on');
         stageToLoad.innerHTML = '<i class="fas fa-film"></i>';
         title.classList.remove('music-title');
-        title.classList.add('movie-title');
+        title.classList.add('movies-title');
         title.innerHTML = 'movies';
     } else if (stageToLoad.getAttribute('data-type') === "geography"){
-        document.querySelector('.movie').classList.remove('movie-on');
+        document.querySelector('.movies').classList.remove('movies-on');
         stageToLoad.classList.add('geo-on');
         stageToLoad.innerHTML = '<i class="fas fa-atlas"></i>';
-        title.classList.remove('movie-title');
+        title.classList.remove('movies-title');
         title.classList.add('geo-title');
         title.innerHTML = 'geography';
     }
