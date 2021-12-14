@@ -58,8 +58,6 @@ function startGame(){
         playAgain.classList.add('hidden');
         stageTitles.style.visibility = 'visible';
         displayQuestion(questionsList, counter);
-
-
     })
 
     nextButton.addEventListener('click', function() {
@@ -177,11 +175,18 @@ function updateStageIcons(){
         title.innerHTML = 'movies';
     } else if (stageToLoad.getAttribute('data-type') === "geography"){
         document.querySelector('.movies').classList.remove('movies-on');
-        stageToLoad.classList.add('geo-on');
+        stageToLoad.classList.add('geography-on');
         stageToLoad.innerHTML = '<i class="fas fa-atlas"></i>';
         title.classList.remove('movies-title');
-        title.classList.add('geo-title');
+        title.classList.add('geography-title');
         title.innerHTML = 'geography';
+    } else if(stageToLoad.getAttribute('data-type') === "final"){
+        document.querySelector('.geography').classList.remove('geography-on');
+        stageToLoad.classList.add('final-on');
+        stageToLoad.innerHTML = '<i class="fas fa-flag-checkered"></i>';
+        title.classList.remove('geography-title');
+        title.classList.add('final-title');
+        title.innerHTML = 'final';
     }
       
 

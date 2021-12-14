@@ -94,19 +94,19 @@ body{
     text-shadow: 0 0 0.8em #ffe400, 0 0 0.1em #fff;
 }
 
-.geo{
+.geography{
     border: 4px solid;
     border-color:  #14a76c;
     color: #14a76c;
 }
 
-.geo-on{
+.geography-on{
     color: #252525;
     background-color: #14a76c;
     box-shadow: 0 0 0.7em #14a76c;
 }
 
-.geo-title{
+.geography-title{
     color:#14a76c;
     text-shadow: 0 0 0.8em #14a76c, 0 0 0.1em #252525;
 }
@@ -115,6 +115,17 @@ body{
     border: 4px solid;
     border-color:  #E26188;
     color: #E26188;
+}
+
+.final-on{
+    color: #252525;
+    background-color: #E26188;
+    box-shadow: 0 0 0.7em #E26188;
+}
+
+.final-title{
+    color:#E26188;
+    text-shadow: 0 0 0.8em #E26188, 0 0 0.1em #252525;
 }
 
 /*--Stage Title --*/
