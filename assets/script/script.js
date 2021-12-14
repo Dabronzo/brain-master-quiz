@@ -51,7 +51,13 @@ function startGame(){
         questionsList = getQuestionByType('music');
         lives = 3;
         restetIcons();
-        currentStage = document.querySelector('music');
+        currentStage = document.querySelector('.music');
+        currentStage.classList.add('selected');
+        updatePlayerLives(lives);
+        updateStageIcons();
+        playAgain.classList.add('hidden');
+        stageTitles.style.visibility = 'visible';
+        displayQuestion(questionsList, counter);
 
 
     })
@@ -84,16 +90,23 @@ function startGame(){
     }
 }
 
+/**
+ * Restore the stage icons to initial and remove the classes selected
+ * and for style of the title stages
+ */
 function restetIcons(){
-    let allStageIcons = document.getElementsByClassName("stage");
+    var allStageIcons = document.getElementsByClassName("stage");
+    var title = document.getElementById('stage-name');
     for (let stage of allStageIcons){
         if(stage.classList.contains('selected')){
             let stageType = stage.getAttribute('data-type');
             console.log(stageType);
             stage.classList.remove(`${stageType}-on`);
             stage.classList.remove('selected');
+            title.classList.remove(`${stageType}-title`);
         }
     }
+
     
 }
 
@@ -102,9 +115,12 @@ function restetIcons(){
  * display a screen when you arre dead and a button to play again
  */
 function displayDead(){
+    document.querySelector('.multiple-choice').classList.add('hidden');
+    document.getElementById('player-status').classList.add('hidden');
+    document.getElementById('stage-name').style.visibility = 'hidden';
     document.getElementById('play-again').classList.remove('hidden');
     var textArea = document.getElementById('enter-data');
-    textArea.innerHTML = "<p id='quest-para'>Sorry You've Lost the Game</p>";
+    textArea.innerHTML = "<p id='quest-para'>Sorry You've Lost the Game</p><br><span id='wrong-check'><i class='far fa-times-circle'></i></span>";
 
 }
 
@@ -113,6 +129,9 @@ function displayDead(){
  * @param {the number of lives of the player} lives 
  */
 function updatePlayerLives(lives){
+    if(document.getElementById('player-status').classList.contains('hidden')){
+        document.getElementById('player-status').classList.remove('hidden');
+    }
     document.getElementById('lifes').innerHTML = "";
     for (let i=0; i < lives;i++){
         document.getElementById('lifes').innerHTML += `<i class="fas fa-heart"></i>`;
@@ -144,7 +163,12 @@ function stageTransfer() {
 function updateStageIcons(){
     var stageToLoad = document.querySelector('.selected');
     var title = document.getElementById('stage-name');
-    if (stageToLoad.getAttribute('data-type') === 'movies'){
+    if(stageToLoad.getAttribute('data-type') === 'music'){
+        document.querySelector('.music').classList.add('music-on');
+        stageToLoad.innerHTML = '<i class="fas fa-music"></i>';
+        title.classList.add('music-title');
+        title.innerHTML = 'music';
+    } else if (stageToLoad.getAttribute('data-type') === 'movies'){
         document.querySelector('.music').classList.remove('music-on');
         stageToLoad.classList.add('movies-on');
         stageToLoad.innerHTML = '<i class="fas fa-film"></i>';
@@ -159,6 +183,7 @@ function updateStageIcons(){
         title.classList.add('geo-title');
         title.innerHTML = 'geography';
     }
+      
 
 }
 
