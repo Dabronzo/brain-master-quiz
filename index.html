@@ -6,25 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     
-    <title>Document</title>
+    <title>Brain Quizz</title>
 </head>
 <body>
-    <h2 class="heading">Quizz Game</h2>
-    <div class="progress-area box">
-        <div data-type="music" class="stage music selected">
-            <i class="fas fa-lock"></i>
+    <!--Header display the title and the stage icons-->
+    <header>
+        <h2 class="heading">Quizz Game</h2>
+        <div class="progress-area box">
+            <div data-type="music" class="stage music selected">
+                <i class="fas fa-lock"></i>
+            </div>
+            <div data-type="movies" class="stage movies">
+                <i class="fas fa-lock"></i>
+            </div>
+            <div data-type="geography" class="stage geography">
+                <i class="fas fa-lock"></i>
+            </div>
+            <div data-type="final" class="stage final">
+                <i class="fas fa-lock"></i>
+            </div>
         </div>
-        <div data-type="movies" class="stage movies">
-            <i class="fas fa-lock"></i>
-        </div>
-        <div data-type="geography" class="stage geography">
-            <i class="fas fa-lock"></i>
-        </div>
-        <div data-type="final" class="stage final">
-            <i class="fas fa-lock"></i>
-        </div>
-    </div>
-    <div class="game-area box">
+    </header>
+    <!--Game area qhere the player status and questions are displayed-->
+    <section class="game-area box">
         <div id="stage-type-area">
             <h3 id="stage-name">The questions will be made here</h3>
         </div>
@@ -32,9 +36,7 @@
             <div id="enter-data">
                 <p id="quest-para">Enter your name to play</p>
                 <input id="player-name" type="text"><br>
-                <button id="start" data-type="play" class="tutorial-btn">Play</button><br>
-                
-                    
+                <button id="start" data-type="play" class="tutorial-btn">Play</button><br>    
             </div>
             <button id='play-again' class='tutorial-btn hidden'>Play Again</button>
         </div>
@@ -42,14 +44,14 @@
             <span>Player: </span><span id="player"></span><br>
             <span>Lifes: </span><span id="lifes"></span><br>
             <button id="next" data-type="next-btn" class="tutorial-btn hidden">Next</button>
-            
-
         </div>
-        
-    </div>
-    <div id="separator">
-    </div>
-    <div class="multiple-choice box hidden">
+    </section>
+    <!--Empty section to separate the buttons from the game area-->
+    <section id="separator">
+    </section>
+
+    <!--Section where the buttons for multiple choice answers are displayed-->
+    <section class="multiple-choice box hidden">
         <button data-type="d" class="info-answer-box btn">
             <h4>D</h4>
             <p>the answer text for this one</p>
@@ -66,7 +68,7 @@
             <h4>A</h4>
             <p>the answer text for this one</p>
         </button>
-    </div>
+    </section>
 
 
     <script src="assets/script/script.js"></script>
