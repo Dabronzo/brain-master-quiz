@@ -40,4 +40,4 @@ To keep it simple and easy to load the website was designed using minimalist con
 
 
 ## GitHub Pages Link:
-[Quizz Game Page](https://dabronzo.github.io/briain-quizz-game/)
+[Quizz Game Page](https://dabronzo.github.io/brain-master-quiz/)
