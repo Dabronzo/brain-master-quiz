@@ -164,11 +164,10 @@ body{
 }
 #next{
     margin-bottom: -0.8em;
-    float: right;
-    margin-right: -5rem;
     position: absolute;
-    left: 9rem;
+    left: 50%;
     bottom: 1rem;
+    transform: translate(-50%, -50%);
 }
 .tutorial-btn{
     color: #fff;
