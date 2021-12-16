@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function(){
 function startGame(){
     document.getElementById('player-status').classList.remove('hidden');
     document.querySelector('.game-area').style.height = '40vh';
+    var score = 0;
     var lives = 3;
     var counter = 0;
     var currentStage = document.querySelector('.selected');
@@ -44,6 +45,8 @@ function startGame(){
     //Listeners
     //restore the game stage when clicked
     playAgain.addEventListener('click', function(){
+        score = 0;
+        document.getElementById("score").innerHTML = score;
         counter = 0;
         questionsList = getQuestionByType('music');
         lives = 3;
@@ -72,6 +75,7 @@ function startGame(){
             if(button.innerHTML === questionsList[counter - 1].rightAnswer){
                 console.log('Got it Right');
                 playerAnswer = true;
+                score = scoreSystem(score);
                 questionTransfer(counter, playerAnswer, questionsList, lives);
 
             } else{
@@ -82,7 +86,17 @@ function startGame(){
         })
     }
 }
-
+/**
+ * takes que score, add 10 and display on html
+ * @param {string  of the score} scoreNumb 
+ * @returns string number new score
+ */
+function scoreSystem(scoreNumb){
+    var newScore = parseInt(scoreNumb);
+    newScore += 10;
+    document.getElementById("score").innerHTML = newScore.toString();
+    return newScore;
+}
 /**
  * Restore the stage icons to initial and remove the classes selected
  * and for style of the title stages
@@ -101,9 +115,7 @@ function restetIcons(){
             stage.classList.remove('selected');
             title.classList.remove(`${stageType}-title`);
         }
-    }
-
-    
+    }   
 }
 
 /**
@@ -117,9 +129,7 @@ function displayDead(){
     document.getElementById('play-again').classList.remove('hidden');
     var textArea = document.getElementById('enter-data');
     textArea.innerHTML = "<p id='quest-para'>Sorry You've Lost the Game</p>";
-
 }
-
 /**
  * take the number of lives of the player and display on the game area
  * @param {the number of lives of the player} lives 
@@ -147,15 +157,12 @@ function stageTransfer() {
     if (currentStage.getAttribute('data-type') !== "final"){
         document.getElementById('next').classList.remove('hidden');
         textArea.innerHTML = `<p id='quest-para'>The ${currentStage.getAttribute('data-type')} stage is over, click on Next button to go to the following stage</p>`;
-        
-
     } else {
         textArea.innerHTML = "<p id='quest-para'>Congratulations! You've completed the Game</p>";
         document.getElementById('play-again').classList.remove('hidden');
         document.getElementById('stage-name').style.visibility = 'hidden';
     }
 }
-
 /**
  * When called takes the element selected and place as the stage to load
  * update the icons and title for the stage
@@ -190,10 +197,7 @@ function updateStageIcons(){
         title.classList.add('final-title');
         title.innerHTML = 'final';
     }
-      
-
 }
-
 /**
  * Update the class "selected" of the stages and update the questions list
  * of the main game
@@ -211,12 +215,10 @@ function updateStageQuestions(){
                 nextStage.classList.add('selected');
                 let nextQuestions = getQuestionByType(nextStage.getAttribute('data-type'));
                 return nextQuestions;
-            }
-            
+            }  
         }
     }
 }
-
 /**
  * Display the section between the questions and set a time out to call the next question
  * @param {the current counter} counter 
@@ -233,7 +235,6 @@ function questionTransfer(counter, playerAnswer, questionsList, lives){
     } else{
         textArea.innerHTML = `<span id="wrong-check"><i class="far fa-times-circle"></i></span><br><p id="quest-para">The right answer is <span class="red">${questionsList[counter - 1].rightAnswer}</span></p>`;
     }
-
     setTimeout(function(){
       if(lives !== 0){
         if(counter === questionsList.length){
@@ -245,9 +246,7 @@ function questionTransfer(counter, playerAnswer, questionsList, lives){
           displayDead();
       }
     }, 2000);
-
 }
-
 /**
  * Display the questions
  * @param {List of the questions} listQuestions 
@@ -274,7 +273,6 @@ function displayQuestion(listQuestions, indx){
         document.getElementById('player-status').classList.remove('hidden');
     }
 }
-
 function getQuestionByType (type){
     var questionArray = [];
     const allQuestions =[
@@ -291,7 +289,6 @@ function getQuestionByType (type){
         {question: "How many letter tiles are there in a game of <span class='red'>Scrabble</span>?", type: "final", answers: ["100 tiles", "50 tiles", "150 tiles", "200 tiles"], rightAnswer: "100 tiles"},
         {question: "What is the spiciest <span class='red'>chilli</span> in the world?", type: "final", answers: ["Thai Pepper", "Naga Jolokia", "Komodo Dragon", "Carolina Reaper"], rightAnswer: "Carolina Reaper"}
     ];
-
     for (let question of allQuestions){
         if (question.type === type){
             questionArray.push(question);
