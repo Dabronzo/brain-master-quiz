@@ -1,16 +1,20 @@
 document.addEventListener("DOMContentLoaded", function(){
 
     let startB = document.getElementById("start");
+    var tutorial = document.getElementById("tutorial");
+
     startB.addEventListener('click', function(){
         console.log('starting the game');
         startGame();
         
     });
+    tutorial.addEventListener('click', function(){
+        displayTutorial();
+    })
 
         
 
 });
-
 /**
  * Main function where the game runs
  */
@@ -295,4 +299,16 @@ function getQuestionByType (type){
         }
     }
     return questionArray; 
+}
+
+function displayTutorial(){
+    var questArea = document.getElementById('enter-data');
+    var textContent =  document.getElementById("quest-para")
+    document.getElementById('start').classList.add('play-tutorial');
+    document.getElementById('tutorial').style.visibility = 'hidden';
+    questArea.style.width = '50em';
+    tutorialHTML = `<p id="quest-para">The has three stages with thematic questions, Music, Movies, Geography and The Final. When you 
+                    complete one stage the next one is unlocked. You'll start with three lives <i class="fas fa-heart"></i>, each wrong
+                    answer will cost one <i class="fas fa-heart"></i>. Do you think you can pass the final stage?? Good luck!</p>`;
+    textContent.innerHTML = tutorialHTML;
 }

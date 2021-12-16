@@ -203,10 +203,9 @@ body{
     font-size: 90%;
 }
 #player-name{
-    height: 40px;
-    width: 150px;
+    height: 30px;
+    width: 14rem;
 }
-
 /*--Multiple Choice Area--*/
 .box{
     box-sizing: border-box;
@@ -311,4 +310,8 @@ body{
 .red{
     color: #a0311b;
     font-size: 120%;
+}
+
+.play-tutorial{
+    margin-left: 10rem;
 }
