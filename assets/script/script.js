@@ -4,8 +4,10 @@ document.addEventListener("DOMContentLoaded", function(){
     var tutorial = document.getElementById("tutorial");
 
     startB.addEventListener('click', function(){
-        console.log('starting the game');
-        startGame();
+        let inputName = document.getElementById('player-name').value;
+        if (checkValidName(inputName)){
+            startGame(inputName);
+        }
         
     });
     tutorial.addEventListener('click', function(){
@@ -18,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function(){
 /**
  * Main function where the game runs
  */
-function startGame(){
+function startGame(name){
     document.getElementById('player-status').classList.remove('hidden');
     document.querySelector('.game-area').style.height = '40vh';
     var score = 0;
@@ -30,7 +32,7 @@ function startGame(){
     var stageTitles = document.getElementById('stage-name');
     var stageIcon = document.querySelector('.music');
     var nextButton = document.getElementById('next');
-    var playerName = document.getElementById('player-name').value;
+    var playerName = name;
     var playAgain = document.getElementById('play-again');
 
     //initial setup for the music stage style
@@ -277,6 +279,19 @@ function displayQuestion(listQuestions, indx){
         document.getElementById('player-status').classList.remove('hidden');
     }
 }
+
+function checkValidName(inputName){
+    if (inputName === ""){
+        alert('Please enter a name to play');
+        return false;
+    } else if (inputName.length > 12){
+        alert('Your name can have max of 12 caraters')
+        return false;
+    } else{
+        return true;
+    }
+}
+
 function getQuestionByType (type){
     var questionArray = [];
     const allQuestions =[
@@ -300,7 +315,9 @@ function getQuestionByType (type){
     }
     return questionArray; 
 }
-
+/**
+ * Display the tutorial if is called
+ */
 function displayTutorial(){
     var questArea = document.getElementById('enter-data');
     var textContent =  document.getElementById("quest-para")
