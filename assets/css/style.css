@@ -315,3 +315,111 @@ body{
 .play-tutorial{
     margin-left: 10rem;
 }
+
+/**Media Queries**/
+
+@media screen and (max-width:1200px) {
+    #quest-para{
+        font-size: 90%;
+    }
+    #player-status{
+        bottom: 0rem;
+    }
+    #player-status span{
+        font-size:70%;
+    }
+    #wrong-check{
+        font-size: 400%;
+    }
+    #right-check{
+        font-size: 400%;
+    }
+
+}
+
+@media screen and (max-width:780px) {
+    #player-status{
+        right: 0rem;
+        letter-spacing: 1.05mm;
+    }
+    .box{
+        width: 80%;
+    }
+    .info-answer-box{
+        font-size: 100%;
+    }
+    
+}
+
+@media screen and (max-width:450px) {
+    .box{
+        width: 99%;
+    }
+    .info-answer-box{
+        font-size: 80%;
+    }
+    #quest-para{
+        font-size: 75%;
+    }
+    .stage{
+        width: 60px;
+        height:60px;
+        font-size: 2.1rem;
+    }
+    #stage-name{
+        font-size: 1.5rem;
+    }
+    #player-status{
+        width: 10rem;
+    }
+    .tutorial-btn{
+        font-size: 80%;
+    }
+    .game-area{
+        height: 48vh;
+    }
+    
+}
+
+@media screen and (max-width:380px) {
+    #player-status{
+        width: 8rem;
+    }
+    #player-status span{
+        font-size:60%;
+    }
+    .heading{
+        font-size: 2rem;
+    }
+    .info-answer-box{
+        width: 100%;
+        height: 65%;
+    }
+    .stage{
+        width: 50px;
+        height: 50px;
+        font-size: 1.8rem;
+    }
+    .progress-area{
+        margin-bottom: 0;
+    }
+    #player-status{
+        width: 6.5rem;
+    }
+    .game-area{
+        height: 69vh;
+    }
+    .play-tutorial{
+        margin-right: 50%;
+        margin-left: 33.33%;
+    }
+}
+/*
+@media screen and (max-width: 321px) {
+    .stage{
+        width: 50px;
+        height: 50px;
+        font-size: 1.8rem;
+    }
+}
+*/

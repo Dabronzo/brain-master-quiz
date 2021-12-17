@@ -18,7 +18,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
 /**
- * Main function where the game runs
+ * Main Function of the Game
+ * @param {string of player name} name 
  */
 function startGame(name){
     document.getElementById('player-status').classList.remove('hidden');
