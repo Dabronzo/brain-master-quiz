@@ -280,13 +280,17 @@ function displayQuestion(listQuestions, indx){
         document.getElementById('player-status').classList.remove('hidden');
     }
 }
-
+/**
+ * Simple function that check if the name is valid for the website and send alert in cas is wrong
+ * @param {string name} inputName 
+ * @returns bool false or true
+ */
 function checkValidName(inputName){
     if (inputName === ""){
         alert('Please enter a name to play');
         return false;
-    } else if (inputName.length > 12){
-        alert('Your name can have max of 12 caraters')
+    } else if (inputName.length > 9){
+        alert('Your name can have max of 9 caraters')
         return false;
     } else{
         return true;
