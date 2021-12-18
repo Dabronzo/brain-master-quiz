@@ -191,13 +191,13 @@ body{
 
 /*--Player Stats/Lifes--*/
 #player-status{
-    width: 11rem;
-    position: absolute;
-    right: 5rem;
-    bottom: 1rem;
+    width: 14rem;
     color: black;
     letter-spacing: 1.2mm;
     font-weight: bolder;
+    position: absolute;
+    right: 5rem;
+    bottom: 1rem;
 }
 #player-status span{
     font-size: 90%;
@@ -316,6 +316,17 @@ body{
     margin-left: 10rem;
 }
 
+footer{
+    text-align: center;
+    font-size: 90%;
+    color: #fff;
+    margin-top:1.5rem;
+}
+footer a{
+    color: #fff;
+    font-size: 150%;
+}
+
 /**Media Queries**/
 
 @media screen and (max-width:1200px) {
@@ -324,6 +335,7 @@ body{
     }
     #player-status{
         bottom: 0rem;
+        width: 11rem;
     }
     #player-status span{
         font-size:70%;
@@ -340,7 +352,7 @@ body{
 @media screen and (max-width:780px) {
     #player-status{
         right: 0rem;
-        letter-spacing: 1.05mm;
+        letter-spacing: 0.3mm;
     }
     .box{
         width: 80%;
@@ -370,7 +382,7 @@ body{
         font-size: 1.5rem;
     }
     #player-status{
-        width: 10rem;
+        width: 9.8rem;
     }
     .tutorial-btn{
         font-size: 80%;
