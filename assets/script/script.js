@@ -240,7 +240,7 @@ function questionTransfer(counter, playerAnswer, questionsList, lives){
         textArea.style.width = '6em';
         textArea.innerHTML = `<span id="right-check"><i class="far fa-check-circle"></i></span>`;
     } else{
-        textArea.innerHTML = `<span id="wrong-check"><i class="far fa-times-circle"></i></span><br><p id="quest-para">The right answer is <span class="red">${questionsList[counter - 1].rightAnswer}</span></p>`;
+        textArea.innerHTML = `<span id="wrong-check"><i class="far fa-times-circle"></i></span><br><p id="quest-para">The right answer is <span class="black">${questionsList[counter - 1].rightAnswer}</span></p>`;
     }
     setTimeout(function(){
       if(lives !== 0){
@@ -290,7 +290,7 @@ function checkValidName(inputName){
         alert('Please enter a name to play');
         return false;
     } else if (inputName.length > 9){
-        alert('Your name can have max of 9 caraters')
+        alert('Your name can have max of 9 characters')
         return false;
     } else{
         return true;
@@ -300,18 +300,18 @@ function checkValidName(inputName){
 function getQuestionByType (type){
     var questionArray = [];
     const allQuestions =[
-        {question: "what instrument did <span class='red'>Paul Mccartney</span> play on The Beatles?", type: "music", answers: ["bass", "keyboard", "drums", "banjo"], rightAnswer: "bass" },
-        {question: "Which one of the following musicians used to be a <span class='red'>teacher?</span>", type: "music", answers: ["Michel Jackson", "Dave Grohl", "Sting", "Eminen"], rightAnswer: "Sting"},
-        {question: "Which country the band <span class='red'>AC/DC</span> is from?", type: "music", answers: ["USA", "England", "South Africa", "Australia"], rightAnswer: "Australia"},
-        {question: "How many oscars did the movie <span class='red'>Titanic</span> win", type: "movies", answers: ["21 Oscars", "11 Oscars", "14 Oscars", "9 Oscars"], rightAnswer: "11 Oscars"},
-        {question: "Where were <span class='red'>The Lord Of The Rings</span> movies filmed?", type: "movies", answers: ["Ireland", "Iceland", "New Zealand", "Australia"], rightAnswer: "New Zealand"},
-        {question: "The <span class='red'>second</span> rule of the Fight Club is 'Do not...", type: "movies", answers: ["...talk about the Fight Club", "..punch on the balls", "...go away", "...stop to fight" ], rightAnswer: "...talk about the Fight Club"},
-        {question: "What is the capital of <span class='red'>Australia</span>", type: "geography", answers: ["Sydney", "Viena", "Melbourne", "Canberra"], rightAnswer: "Canberra"},
-        {question: "What river runs through <span class='red'>Baghdad</span>?", type: "geography", answers: ["Niko", "Tigris", "Jordam", "Euphrates"], rightAnswer: "Tigris"},
-        {question: "In what country can you visit <span class='red'>Machu Pichu</span>?", type: "geography", answers: ["Chile", "Argentina", "Brazil", "Peru"], rightAnswer: "Peru"},
-        {question: "What is <span class='red'>Joe Biden's</span> middle name?", type: "final", answers: ["Steven", "Murray", "Robinette", "Williams"], rightAnswer: "Robinette"},
-        {question: "How many letter tiles are there in a game of <span class='red'>Scrabble</span>?", type: "final", answers: ["100 tiles", "50 tiles", "150 tiles", "200 tiles"], rightAnswer: "100 tiles"},
-        {question: "What is the spiciest <span class='red'>chilli</span> in the world?", type: "final", answers: ["Thai Pepper", "Naga Jolokia", "Komodo Dragon", "Carolina Reaper"], rightAnswer: "Carolina Reaper"}
+        {question: "what instrument did <span class='black'>Paul Mccartney</span> play on The Beatles?", type: "music", answers: ["bass", "keyboard", "drums", "banjo"], rightAnswer: "bass" },
+        {question: "Which one of the following musicians used to be a <span class='black'>teacher?</span>", type: "music", answers: ["Michel Jackson", "Dave Grohl", "Sting", "Eminen"], rightAnswer: "Sting"},
+        {question: "Which country the band <span class='black'>AC/DC</span> is from?", type: "music", answers: ["USA", "England", "South Africa", "Australia"], rightAnswer: "Australia"},
+        {question: "How many oscars did the movie <span class='black'>Titanic</span> win", type: "movies", answers: ["21 Oscars", "11 Oscars", "14 Oscars", "9 Oscars"], rightAnswer: "11 Oscars"},
+        {question: "Where were <span class='black'>The Lord Of The Rings</span> movies filmed?", type: "movies", answers: ["Ireland", "Iceland", "New Zealand", "Australia"], rightAnswer: "New Zealand"},
+        {question: "The <span class='black'>second</span> rule of the Fight Club is 'Do not...", type: "movies", answers: ["...talk about the Fight Club", "..punch on the balls", "...go away", "...stop to fight" ], rightAnswer: "...talk about the Fight Club"},
+        {question: "What is the capital of <span class='black'>Australia</span>", type: "geography", answers: ["Sydney", "Viena", "Melbourne", "Canberra"], rightAnswer: "Canberra"},
+        {question: "What river runs through <span class='black'>Baghdad</span>?", type: "geography", answers: ["Niko", "Tigris", "Jordam", "Euphrates"], rightAnswer: "Tigris"},
+        {question: "In what country can you visit <span class='black'>Machu Pichu</span>?", type: "geography", answers: ["Chile", "Argentina", "Brazil", "Peru"], rightAnswer: "Peru"},
+        {question: "What is <span class='black'>Joe Biden's</span> middle name?", type: "final", answers: ["Steven", "Murray", "Robinette", "Williams"], rightAnswer: "Robinette"},
+        {question: "How many letter tiles are there in a game of <span class='black'>Scrabble</span>?", type: "final", answers: ["100 tiles", "50 tiles", "150 tiles", "200 tiles"], rightAnswer: "100 tiles"},
+        {question: "What is the spiciest <span class='black'>chilli</span> in the world?", type: "final", answers: ["Thai Pepper", "Naga Jolokia", "Komodo Dragon", "Carolina Reaper"], rightAnswer: "Carolina Reaper"}
     ];
     for (let question of allQuestions){
         if (question.type === type){

@@ -307,8 +307,8 @@ body{
     font-size: 500%;
     color: #a0311b;
 }
-.red{
-    color: #a0311b;
+.black{
+    color: #272727;
     font-size: 120%;
 }
 
@@ -351,7 +351,7 @@ footer a{
 
 @media screen and (max-width:780px) {
     #player-status{
-        right: 0rem;
+        right: -0.7rem;
         letter-spacing: 0.3mm;
     }
     .box{
