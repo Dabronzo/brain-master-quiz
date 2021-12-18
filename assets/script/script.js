@@ -145,9 +145,9 @@ function updatePlayerLives(lives){
     if(document.getElementById('player-status').classList.contains('hidden')){
         document.getElementById('player-status').classList.remove('hidden');
     }
-    document.getElementById('lifes').innerHTML = "";
+    document.getElementById('lives').innerHTML = "";
     for (let i=0; i < lives;i++){
-        document.getElementById('lifes').innerHTML += `<i class="fas fa-heart"></i>`;
+        document.getElementById('lives').innerHTML += `<i class="fas fa-heart"></i>`;
     }
 }
 
