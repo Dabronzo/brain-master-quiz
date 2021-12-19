@@ -1,7 +1,10 @@
 # Brain Master Quiz
 Brain Master Quiz has a goal of recreate the feeling of playing the classic pub quizzes, with different thematic stages. The player starts answering questions at the first stage and when all the questions are done will move to the next one, this reats until the last one. The player starts with three lives, every wrong question costs one, the challenge is finish the quiz without running out lives.
 
-The website was developed to be easy to customize the questions. Any person with a basic  knowledge of javascript can add more questions or change the number of questions per stage to make their own customize versions of the game. Brain Master Quiz is totally responsive, can be played on smartphones and tables to bring some fun everywhere you go.   
+The website was developed to be easy to customize the questions. Any person with a basic  knowledge of javascript can add more questions or change the number of questions per stage to make their own customize versions of the game. Brain Master Quiz is totally responsive, can be played on smartphones and tables to bring some fun everywhere you go.  
+
+# Deployment
+The web site is deployed using the **GitHub** pages -> [Brain Master Quiz](https://dabronzo.github.io/brain-master-quiz/) 
 
 
 # 1.0 UX Development
@@ -164,9 +167,9 @@ By the bottom of the website a simple paragraph is displayed as footer featuring
 
 # 3 Tecnologies Used
 
-- ## HTML
-- ## CSS
-- ## JavaScript
+- ### HTML
+- ### CSS
+- ### JavaScript
 
 # 4 Testing Process
 
@@ -200,10 +203,10 @@ This part is to understand how to customize the questions of the game, more can 
 
 - ## 6.1 Changing The Questions
 All the game questions are objects, stored in a function called “getQuestionsByType”. This function is called on the game logic to return an array of questions with a specific type according to the game stages (music, movies, geography and final). The question objects have the following attributes: 
-- ### Question -> String with the question itself.
-- ### Type -> String with the stage that the question belong (music, movies, geography and final).
-- ### Answers -> Array of Strings with four possible answers for that question.
-- ### Right Answer -> String with the correct answer for that question.
+- #### Question -> String with the question itself.
+- #### Type -> String with the stage that the question belong (music, movies, geography and final).
+- #### Answers -> Array of Strings with four possible answers for that question.
+- #### Right Answer -> String with the correct answer for that question.
 So, the new question needs to follow the same format as this example:
 
 {question: "what instrument did <span class='black'>Paul Mccartney</span> play on The Beatles?", type: "music", answers: ["bass", "keyboard", "drums", "banjo"], rightAnswer: "bass" },
@@ -226,37 +229,18 @@ I guess the big lesson here is how important is for a developer to troubleshoot 
 # 8 Future of Developments
 My main idea for something that can be done on the future is implement the game as a app for pub quizzes, where can be used in quizzes organized by some social event, so the players could enter in the game and play with their phones. The game will make all the players answers, do the calcula-tions, and will send the live result to the host. Can be used instead of printing papers for the question and allow a more interactive experience for pub quizzes.
 
-# 9 Credit
+# 9 Credits
 All the code in all files HTML, CSS and JavaScript were made by me. However I've used a few external libraries/tools that will be dislcaimed bellow:
-- ## [fontawesome.com](https://fontawesome.com/) -> for all the icons.
-- ## [Google Fonts](https://fonts.google.com/) -> for the webiste font style.
-- ## [Code Institute](https://codeinstitute.net/) -> for the dockerfile, and the student support.
+- ### [fontawesome.com](https://fontawesome.com/) -> for all the icons.
+- ### [Google Fonts](https://fonts.google.com/) -> for the webiste font style.
+- ### [Code Institute](https://codeinstitute.net/) -> for the dockerfile, and the student support.
 ## 9.1 To address the problems during the development:
-- ## [Google Search](https://www.google.com/) -> Good old technik.
-- ## [Stack Overflow](https://stackoverflow.com/) -> I've read several post about the listeners and events on JS.
-- ## [W3Schools.com](https://www.w3schools.com/) -> Essential for quick consults.
+- ### [Google Search](https://www.google.com/) -> Good old technik.
+- ### [Stack Overflow](https://stackoverflow.com/) -> I've read several post about the listeners and events on JS.
+- ### [W3Schools.com](https://www.w3schools.com/) -> Essential for quick consults.
 
 # 10 Acknowledgments
 **Special thanks to:**
 - My mentor **Brian O'Hare** for the help and guidance.
 - My partner for the support and taking some houseduties while I was working on this project
 - My mother and stepfather for all the support and believe in me always.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## GitHub Pages Link:
-[Quizz Game Page](https://dabronzo.github.io/brain-master-quiz/)
