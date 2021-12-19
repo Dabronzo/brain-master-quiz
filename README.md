@@ -4,28 +4,76 @@ Brain Master Quiz has a goal of recreate the feeling of playing the classic pub 
 The website was developed to be easy to customize the questions. Any person with a basic  knowledge of javascript can add more questions or change the number of questions per stage to make their own customize versions of the game. Brain Master Quiz is totally responsive, can be played on smartphones and tables to bring some fun everywhere you go.  
 
 # Deployment
-The web site is deployed using the **GitHub** pages -> [Brain Master Quiz](https://dabronzo.github.io/brain-master-quiz/) 
+The web site is deployed using the **GitHub** pages -> [Brain Master Quiz](https://dabronzo.github.io/brain-master-quiz/)
 
+# Table of Content
+1. [**UX Development**](#ux-development)
+    * [**Strategy**](#stategy)
+    * [**Scope**](#scope)
+    * [**User Stories**](#user-stories)
+    * [**Structure**](#structure)
+    * [**Wireframe Skeleton**](#wireframe-skeleton)
+    * [**Surface Design and Colours**](#surface-design-and-colours)
 
-# 1.0 UX Development
+2. [**Features**](#2-features)
+    * [**Title and Stage Progress Area**](#title-and-stage-progress-area)
+    * [**Game Area**](#game-area)
+    * [**Buttons**](#buttons)
+    * [**Input Area**](#input-area)
+    * [**Tutorial**](#tutorial)
+    * [**Stage title and question**](#stage-title-and-question)
+    * [**Right Answer**](#right-answer)
+    * [**Wrong Answer**](#wrong-answer)
+    * [**Stage Transfer**](#stage-transfer)
+    * [**Player Status**](#player-status)
+    * [**Running out of Lives**](#running-out-of-lives)
+    * [**The Endgame**](#the-endgame)
+    * [**Multiple Choice Area**](#multiple-choice-area)
+    * [**Footer**](#footer)
+
+3. [**Tecnologies Used**](#3-tecnologies-used)
+
+4. [**Testing Process**](#4-testing-process)
+    * [**During the Development Process**](#during-the-development-process)
+    * [**Testing Tools**](#testing-tools)
+
+5. [**Known Bugs**](#5-known-bugs)
+
+6. [**Customizing The Questions**](#6-customizing-the-questions)
+    * [**Changing The Questions**](#changing-the-questions)
+    * [**Number of questions per Stage**](#number-of-questions-per-stage)
+
+7. [**Development Overview**](#7-development-overview)
+    * [**The Set Up**](#the-set-up)
+    * [**The Problem**](#the-problem)
+    * [**The Fix**](#the-fix)
+    * [**The Lesson**](#the-lesson)
+
+8. [**Future Developments**](#8-future-developments)
+
+9. [**Credits**](#9-credits)
+
+10. [**10 Acknowledgments**](#10-acknowledgments)
+
+# UX Development
 ## Responsive Behaviour
 The website has responsive behavour for different screen sizes, laptops, tablets and smartphones.
 
 ![Am I responsive pic](/docs/responsive.png)
 
-### 1.1 Strategy
+### Strategy
 Due to the nature of the quiz envolving different themes such as music, movies and geaography attracks persons who like quizzes in general or misses pub-quizzes and due to lockdowns is more difficult to find one near you.
 
-### 1.2 Our Target Audience:
+### Our Target Audience:
 * People who enjoy quiz with different themes.
 * Those who like pop culture and general knowledge.
 * People who know a bit of JavaScript and wants to use the quiz format to their own questions.
 
 
-### 2.0 Scope
+### Scope
 The game is divided in four stages each one contains questions about their respective stage theme. The player starts in the Music stage, after the questions of this stage are finished the website brings the player to the Movies stage and so on for the following Geography and Final Stage.
 
-### 2.1 User Stories
+### User Stories
 
 #### As a Regular Quiz Player
 * Start the quiz when I’m ready.
@@ -41,12 +89,12 @@ The game is divided in four stages each one contains questions about their respe
 
 
 
-### 3 Structure
+### Structure
 Brain Master Quiz has only one page where the user interacts with the website. The questions are displayed on the game area, and the possible answers are displayed on the buttons at the “multiple choice area”. If the current stage is finished the website display an info and waits for the player to click to move to the next one. If the player runs out lives or the game is finished there is an option to play again, by doing the game begins once again.
 
 ![structure flow](/docs/structure_flow.jpg)
 
-#### 3.1 Wireframe Skeleton
+#### Wireframe Skeleton
 ![wireframe skeleton](/docs/quiz_wireframe_small.png)
 #### 3.2 Picture Legend 
 - #### 1 Stage Icons
@@ -57,20 +105,20 @@ Brain Master Quiz has only one page where the user interacts with the website. T
 - #### 6 Player Status
 - #### 7 Multiple Choice Area
 
-### 4 Surface Design and Colours
+### Surface Design and Colours
 The website was designed with a minimalist concept with no pictures, just the using icons from Font Awesome and Google fonts.
 
-#### 4.1 Palette of Colours Used:
+####  Palette of Colours Used:
 #### Black (Hex #272727) -------  Grey (Hex #747474) -------- Orange ( Hex #ff652f) ------- Yellow (Hex #ffe400) ------- Green (Hex #14a76c)
 ![Palette of Colours](/docs/palette.png)
 
-#### 4.2 Secondary Colours User
+#### Secondary Colours User
 * For White (Hex #fff).
 * Neon like colour (Hex #ff00ff).
 
 # 2 Features
 
-## 2.1 Title and Stage Progress Area
+## Title and Stage Progress Area
 Those features are located in the header area of the website. The logo is a simple link that brings the user to the page at the stage when is loaded, the Stage Progress Area is where all the icons of the four stages of the game are displayed. This Feature work as a navigation through the game, the icons were designed to provide clear feedback about which stage the player currently is and which ones have already passed.
 
 ![Quiz Header pic](/docs/header_quiz.png)
@@ -90,12 +138,12 @@ At the beginning of the game all the icons are showing a closed lock. When the p
 ![Final stage on](/docs/final_on.png)
 * Final stage icon on
 
-## 2.1 Game Area
+## Game Area
 This area is where all the information and the questions are displayed for the user.  Also holds specific buttons: **Play** to start the game, **How to Play** to display a tutorial, **Next** to change stage and **Play Again** to play the game again.
 
 ![Game Area](/docs/game_area.png)
 
-### 2.1.0 Buttons
+### Buttons
 All the buttons of the game area have a transparent background and a neon pink border, a pseudo class hover and also cursor change to make it clear that is a button and can be clicked.
 
 ![Buttons image](/docs/play_button.png)
@@ -107,59 +155,59 @@ All the buttons of the game area have a transparent background and a neon pink b
 ![Play Again](/docs/play_again.png)
 * Play Again button hover effect
 
-### 2.1.1 Input Area
+### Input Area
 As the page is loaded a box will appear on the asking the player to enter with the name to start to play the game or can be directed to the tutorial and later start the game.
 
 ![Input area](/docs/input_area.png)
 
-### 2.1.2 Tutorial
+### Tutorial
 Simple paragraph explaining the basics of the game
 
 ![tutorial](/docs/tutorial.png)
 
-### 2.1.3 Stage title and question
+### Stage title and question
 The stage title holds the name of the stage that the player currently is, also have the same colour od the respective stage icon.
 The questions are displayed in white colour to make contrast with the background to provide a good readable text. Some important words are displayed in different colours to highlight it in the question.
 
 ![question sample](/docs/question.png)
 
-### 2.1.4 Right Answer
+### Right Answer
 Display a green right check icon image
 
 ![right answer](/docs/right_answer.png)
 
-### 2.1.5 Wrong Answer
+### Wrong Answer
 Display a red wrong check icon image and also a small text with the correct answer
 
 ![wrong answer](/docs/wrong_answer.png)
 
-### 2.1.6 Stage Transfer
+### Stage Transfer
 Display a message to let the player know the current stage is over so when the player is ready will move to the next one, using the **Next** button.
 
 ![transfering stage](/docs/stage_transfer.png)
 
-### 2.1.7 Player Status
+### Player Status
 This area holds the player’s information such as name, the number of lives (displayed as a heart icon) and the current score. The display is updated every time there is a change on lives or score.
 
 ![player status](/docs/player_status.png)
 
-### 2.1.8 Running out of Lives
+### Running out of Lives
 As the game rule the player has three lives on the game start, every wrong question will cost one live, if the player has no live left the game activate the game over and will display a message and ask if the user want to play again.
 
 ![gameover](/docs/gameover.png)
 
-### 2.1.9 The Endgame
+### The Endgame
 If the player passes all the stages without loosing all the lives a message appears to congratulate the player and also on the player status can see the final score. The player also has an option to play again if it wanted
 
 ![endgame](/docs/endgame.png)
 
-## 2.2 Multiple Choice Area
+## Multiple Choice Area
 
 Every question has four possible answers, they are displayed on the but-tons at the multiple choice area. The buttons have a linear shading on the background and display a pink border when hovered over. This area is hidden when the game is not expecting the player insert a question to avoid been clicked and generate bugs on the game progress.
 
 ![multple choice buttons](/docs/answer_buttons.png)
 
-## 2.3 Footer
+## Footer
 
 By the bottom of the website a simple paragraph is displayed as footer featuring information about the developer and a external link for my **GitHub** profile.
 
@@ -173,26 +221,26 @@ By the bottom of the website a simple paragraph is displayed as footer featuring
 
 # 4 Testing Process
 
-## 4.1 During the Development Process
+## During the Development Process
 The website was during all the development process to cover all the possible outcomes. Some adjustments needed to be done while this process especially on the input area, to the user enter the player name, to prevent the text to be too big and break the style of the page . The multiple-choice area also is hidden in some parts during the game to prevent the player click when the game is not expecting.
 
-## 4.2 Testing Tools
+## Testing Tools
 
-- ### 4.2.1 Google DevTool Lighthouse
+- ### Google DevTool Lighthouse
 ![lighthouse result](/docs/lighthouse.png)
 
-- ### 4.2.2 JS Hint
+- ### JS Hint
 One warning appeared on the JS hint regarding calling functions within loops, since that is not an error and the website functionality is not affected by it, this issue will be addressed in the future.
 
 ![jshint result](/docs/jshint.png)
 
-- ### 4.2.2 W3C Validator for HTML
+- ### W3C Validator for HTML
 No issues found, [link to the HTML validation on W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdabronzo.github.io%2Fbrain-master-quiz%2F)
 
-- ### 4.2.3 W3C CSS Validator
+- ### W3C CSS Validator
 No issues found, [link to the CSS validation on W3C](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fdabronzo.github.io%2Fbrain-master-quiz%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
 
-- ### 4.2.4 Color Contrast Validator
+- ### Color Contrast Validator
 No issues found, [link to the validator](https://color.a11y.com/Contrast/)
 
 # 5 Known Bugs
@@ -201,7 +249,7 @@ During the development test all the major bugs and issues were addressed and sol
 # 6 Customizing The Questions
 This part is to understand how to customize the questions of the game, more can be added an also the number of questions per stage can be changed as well.
 
-- ## 6.1 Changing The Questions
+- ## Changing The Questions
 All the game questions are objects, stored in a function called “getQuestionsByType”. This function is called on the game logic to return an array of questions with a specific type according to the game stages (music, movies, geography and final). The question objects have the following attributes: 
 - #### Question -> String with the question itself.
 - #### Type -> String with the stage that the question belong (music, movies, geography and final).
@@ -211,7 +259,7 @@ So, the new question needs to follow the same format as this example:
 
 {question: "what instrument did <span class='black'>Paul Mccartney</span> play on The Beatles?", type: "music", answers: ["bass", "keyboard", "drums", "banjo"], rightAnswer: "bass" },
 
-- ## 6.2 Number of questions per Stage
+- ## Number of questions per Stage
 The game logic identifies how many questions the stage has, so if you want the game have six questions per stage for instance, make sure that you have six questions of each type on the getQuestionsByType function.
 
 # 7 Development Overview
@@ -226,7 +274,7 @@ When I figured this out, I knew that my original idea for the game would not wor
 - ## The Lesson
 I guess the big lesson here is how important is for a developer to troubleshoot problems during the development. Can be really frustrating when your perfect idea does not work because reasons that you don’t know, only with debugging and troubleshooting is possible to overcome this feeling and make your idea works.
 
-# 8 Future of Developments
+# 8 Future Developments
 My main idea for something that can be done on the future is implement the game as a app for pub quizzes, where can be used in quizzes organized by some social event, so the players could enter in the game and play with their phones. The game will make all the players answers, do the calcula-tions, and will send the live result to the host. Can be used instead of printing papers for the question and allow a more interactive experience for pub quizzes.
 
 # 9 Credits
@@ -234,7 +282,7 @@ All the code in all files HTML, CSS and JavaScript were made by me. However I've
 - ### [fontawesome.com](https://fontawesome.com/) -> for all the icons.
 - ### [Google Fonts](https://fonts.google.com/) -> for the webiste font style.
 - ### [Code Institute](https://codeinstitute.net/) -> for the dockerfile, and the student support.
-## 9.1 To address the problems during the development:
+## To address the problems during the development:
 - ### [Google Search](https://www.google.com/) -> Good old technik.
 - ### [Stack Overflow](https://stackoverflow.com/) -> I've read several post about the listeners and events on JS.
 - ### [W3Schools.com](https://www.w3schools.com/) -> Essential for quick consults.
