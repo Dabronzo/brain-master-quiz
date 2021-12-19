@@ -5,6 +5,11 @@ The website was developed to be easy to customize the questions. Any person with
 
 
 # 1.0 UX Development
+## Responsive Behaviour
+The website has responsive behavour for different screen sizes, laptops, tablets and smartphones.
+
+![Am I responsive pic](/docs/responsive.png)
+
 ### 1.1 Strategy
 Due to the nature of the quiz envolving different themes such as music, movies and geaography attracks persons who like quizzes in general or misses pub-quizzes and due to lockdowns is more difficult to find one near you.
 
@@ -42,19 +47,12 @@ Brain Master Quiz has only one page where the user interacts with the website. T
 ![wireframe skeleton](/docs/quiz_wireframe_small.png)
 #### 3.2 Picture Legend 
 - #### 1 Stage Icons
-It is responsible to display in what stage the player currelntly is. When the player moves to a next stage the icon of the current stage style change indicating the new stage is now on.
 - #### 2 Game Area
-Where most of the game interactions are displayed, has a different background than the body.
 - #### 3 PLay Again Button
-When displayed allows the user to play the game once more
 - #### 4 Questions Area
-Wher the questions and other informations are displayed
 - #### 5 Input Area
-Displayed as first when the page is loaded and ask the user to input a name and a button to start to play the game
 - #### 6 Player Status
-Is displayed when the game starts, holds the player name and current lives. Also holds a "Next" button that allow the player change to the next stage
 - #### 7 Multiple Choice Area
-Holds the buttons for the multiple choice answers of each question.
 
 ### 4 Surface Design and Colours
 The website was designed with a minimalist concept with no pictures, just the using icons from Font Awesome and Google fonts.
@@ -163,6 +161,93 @@ Every question has four possible answers, they are displayed on the but-tons at 
 By the bottom of the website a simple paragraph is displayed as footer featuring information about the developer and a external link for my **GitHub** profile.
 
 ![footer](/docs/footer.png)
+
+# 3 Tecnologies Used
+
+- ## HTML
+- ## CSS
+- ## JavaScript
+
+# 4 Testing Process
+
+## 4.1 During the Development Process
+The website was during all the development process to cover all the possible outcomes. Some adjustments needed to be done while this process especially on the input area, to the user enter the player name, to prevent the text to be too big and break the style of the page . The multiple-choice area also is hidden in some parts during the game to prevent the player click when the game is not expecting.
+
+## 4.2 Testing Tools
+
+- ### 4.2.1 Google DevTool Lighthouse
+![lighthouse result](/docs/lighthouse.png)
+
+- ### 4.2.2 JS Hint
+One warning appeared on the JS hint regarding calling functions within loops, since that is not an error and the website functionality is not affected by it, this issue will be addressed in the future.
+
+![jshint result](/docs/jshint.png)
+
+- ### 4.2.2 W3C Validator for HTML
+No issues found, [link to the HTML validation on W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdabronzo.github.io%2Fbrain-master-quiz%2F)
+
+- ### 4.2.3 W3C CSS Validator
+No issues found, [link to the CSS validation on W3C](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fdabronzo.github.io%2Fbrain-master-quiz%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+
+- ### 4.2.4 Color Contrast Validator
+No issues found, [link to the validator](https://color.a11y.com/Contrast/)
+
+# 5 Known Bugs
+During the development test all the major bugs and issues were addressed and solved, however I think the transition of the text in some parts of the game could have a better tweak to smooth it. The decision of not addressing this was taken due to the nature of the project with its deadlines and mine time available, when the game was tested by some people around my social circle they didn’t notice or didn’t mention this bug. However this could be addressed in the future.
+
+# 6 Customizing The Questions
+This part is to understand how to customize the questions of the game, more can be added an also the number of questions per stage can be changed as well.
+
+- ## 6.1 Changing The Questions
+All the game questions are objects, stored in a function called “getQuestionsByType”. This function is called on the game logic to return an array of questions with a specific type according to the game stages (music, movies, geography and final). The question objects have the following attributes: 
+- ### Question -> String with the question itself.
+- ### Type -> String with the stage that the question belong (music, movies, geography and final).
+- ### Answers -> Array of Strings with four possible answers for that question.
+- ### Right Answer -> String with the correct answer for that question.
+So, the new question needs to follow the same format as this example:
+
+{question: "what instrument did <span class='black'>Paul Mccartney</span> play on The Beatles?", type: "music", answers: ["bass", "keyboard", "drums", "banjo"], rightAnswer: "bass" },
+
+- ## 6.2 Number of questions per Stage
+The game logic identifies how many questions the stage has, so if you want the game have six questions per stage for instance, make sure that you have six questions of each type on the getQuestionsByType function.
+
+# 7 Development Overview
+- ## The Set Up
+When the idea to make a quiz online came to me for the first time, I came up with two personal and yet fundamental rules that I should not break. The first rule would be making a technical decision in not using any global variables, the game logic would be entirely structured in functions. For the second rule would create a game where someone could easily change the questions, adding more, increasing the number of questions per stage, with minimal or none change at the main game logic.
+- ## The Problem
+Not using global variables proved to be a challenging task for my existing knowledge of the JavaScript language. My original idea was making one function that asks for arguments as player name, lives, score, and the stage. The function would display the questions for the stage, get the right answer, check the lives, and return the updated information to call the next stage function.
+However, the event listeners were generating a critic bug, after the first stage every time the player would click in a button to answer the question, the listener would activate two clicks, this would mess up the game logic where two listener functions were being activated at the same time. I’ve tried to remove the event listeners for the buttons when the stage is over but also the code didn’t expect as I Imagined, only one of the buttons had the listener removed.
+- ## The Fix
+To address the problem, I needed first to understand why that was happening. After some online search I cam across an article that explained how the listeners function work regarding the scope of event listeners and the JavaScript language. Apparently, the listener is an async function that happens in a different scope that the main code. Is only activated when some event happens. If you create one event for different buttons is impossible to remove for all the buttons because they “exist” in this different scope and just when **one** of the buttons is clicked would interact with the script scope.
+When I figured this out, I knew that my original idea for the game would not work so I rebuild the entire logic as it is right now. This new version has the main game function (StartGame) that takes as argument the name that the player entered. This function is responsible for the logic of the game and call the other functions to do the different game task. The change of stage now is conducted by auxiliar functions called by the main function.
+- ## The Lesson
+I guess the big lesson here is how important is for a developer to troubleshoot problems during the development. Can be really frustrating when your perfect idea does not work because reasons that you don’t know, only with debugging and troubleshooting is possible to overcome this feeling and make your idea works.
+
+# 8 Future of Developments
+My main idea for something that can be done on the future is implement the game as a app for pub quizzes, where can be used in quizzes organized by some social event, so the players could enter in the game and play with their phones. The game will make all the players answers, do the calcula-tions, and will send the live result to the host. Can be used instead of printing papers for the question and allow a more interactive experience for pub quizzes.
+
+# 9 Credit
+All the code in all files HTML, CSS and JavaScript were made by me. However I've used a few external libraries/tools that will be dislcaimed bellow:
+- ## [fontawesome.com](https://fontawesome.com/) -> for all the icons.
+- ## [Google Fonts](https://fonts.google.com/) -> for the webiste font style.
+- ## [Code Institute](https://codeinstitute.net/) -> for the dockerfile, and the student support.
+## 9.1 To address the problems during the development:
+- ## [Google Search](https://www.google.com/) -> Good old technik.
+- ## [Stack Overflow](https://stackoverflow.com/) -> I've read several post about the listeners and events on JS.
+- ## [W3Schools.com](https://www.w3schools.com/) -> Essential for quick consults.
+
+# 10 Acknowledgments
+**Special thanks to:**
+- My mentor **Brian O'Hare** for the help and guidance.
+- My partner for the support and taking some houseduties while I was working on this project
+- My mother and stepfather for all the support and believe in me always.
+
+
+
+
+
+
+
 
 
 
