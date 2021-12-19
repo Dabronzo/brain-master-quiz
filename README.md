@@ -172,5 +172,6 @@ By the bottom of the website a simple paragraph is displayed as footer featuring
 
 
 
+
 ## GitHub Pages Link:
 [Quizz Game Page](https://dabronzo.github.io/brain-master-quiz/)

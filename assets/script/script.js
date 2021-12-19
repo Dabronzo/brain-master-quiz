@@ -12,11 +12,9 @@ document.addEventListener("DOMContentLoaded", function(){
     });
     tutorial.addEventListener('click', function(){
         displayTutorial();
-    })
-
-        
-
+    });
 });
+
 /**
  * Main Function of the Game
  * @param {string of player name} name 
@@ -66,15 +64,15 @@ function startGame(name){
         playAgain.classList.add('hidden');
         stageTitles.style.visibility = 'visible';
         displayQuestion(questionsList, counter);
-    })
+    });
 
     //button to change states
     nextButton.addEventListener('click', function() {
         counter = 0;
         questionsList = updateStageQuestions();
         updateStageIcons();
-        displayQuestion(questionsList, counter)
-    })
+        displayQuestion(questionsList, counter);
+    });
     // multiple choice buttons
     for(let button of allButtons){
         button.addEventListener('click', function(){
@@ -91,9 +89,10 @@ function startGame(name){
                 updatePlayerLives(lives);
                 questionTransfer(counter, playerAnswer, questionsList, lives);
             }
-        })
+        });
     }
 }
+
 /**
  * takes que score, add 10 and display on html
  * @param {string  of the score} scoreNumb 
@@ -105,6 +104,7 @@ function scoreSystem(scoreNumb){
     document.getElementById("score").innerHTML = newScore.toString();
     return newScore;
 }
+
 /**
  * Restore the stage icons to initial and remove the classes selected
  * and for style of the title stages
@@ -255,6 +255,7 @@ function questionTransfer(counter, playerAnswer, questionsList, lives){
       }
     }, 2000);
 }
+
 /**
  * Display the questions
  * @param {List of the questions} listQuestions 
@@ -291,13 +292,34 @@ function checkValidName(inputName){
         alert('Please enter a name to play');
         return false;
     } else if (inputName.length > 9){
-        alert('Your name can have max of 9 characters')
+        alert('Your name can have max of 9 characters');
         return false;
     } else{
         return true;
     }
 }
 
+/**
+ * Display the tutorial if is called
+ */
+function displayTutorial(){
+    var questArea = document.getElementById('enter-data');
+    var textContent =  document.getElementById("quest-para");
+    document.getElementById('start').classList.add('play-tutorial');
+    document.getElementById('tutorial').style.visibility = 'hidden';
+    questArea.style.width = '50em';
+    var tutorialHTML = `<p id="quest-para">The has three stages with thematic questions, Music, Movies, Geography and The Final. When you 
+                    complete one stage the next one is unlocked. You'll start with three lives <i class="fas fa-heart"></i>, each wrong
+                    answer will cost one <i class="fas fa-heart"></i>. Do you think you can pass the final stage?? Good luck!</p>`;
+    textContent.innerHTML = tutorialHTML;
+}
+
+/**
+ * Is where the questions objects are stored
+ * when called return the the questions for a specific stage
+ * @param {string type of question} type 
+ * @returns an array with all questions objects
+ */
 function getQuestionByType (type){
     var questionArray = [];
     const allQuestions =[
@@ -320,18 +342,4 @@ function getQuestionByType (type){
         }
     }
     return questionArray; 
-}
-/**
- * Display the tutorial if is called
- */
-function displayTutorial(){
-    var questArea = document.getElementById('enter-data');
-    var textContent =  document.getElementById("quest-para")
-    document.getElementById('start').classList.add('play-tutorial');
-    document.getElementById('tutorial').style.visibility = 'hidden';
-    questArea.style.width = '50em';
-    tutorialHTML = `<p id="quest-para">The has three stages with thematic questions, Music, Movies, Geography and The Final. When you 
-                    complete one stage the next one is unlocked. You'll start with three lives <i class="fas fa-heart"></i>, each wrong
-                    answer will cost one <i class="fas fa-heart"></i>. Do you think you can pass the final stage?? Good luck!</p>`;
-    textContent.innerHTML = tutorialHTML;
 }

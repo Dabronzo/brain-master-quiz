@@ -287,6 +287,10 @@ a {
     animation: displayAni 1s ease-in forwards;
 
 }
+@keyframes displayAni {
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
 
 .hidden{
     visibility: hidden;
@@ -297,13 +301,11 @@ a {
 }
 
 /**---styling for the tutorial --**/
-
-
-@keyframes displayAni {
-    from{opacity: 0;}
-    to{opacity: 1;}
+.play-tutorial{
+    margin-left: 10rem;
 }
 
+/*-- Style for the answer check --*/
 #right-check{
     font-size: 500%;
     color: #90EE90;
@@ -317,9 +319,7 @@ a {
     font-size: 120%;
 }
 
-.play-tutorial{
-    margin-left: 10rem;
-}
+/*--Style for the Footer--*/
 
 footer{
     text-align: center;
@@ -337,7 +337,7 @@ footer a{
 }
 
 /**Media Queries**/
-
+/* smaller laptops and big tablets */
 @media screen and (max-width:1200px) {
     #quest-para{
         font-size: 90%;
@@ -357,7 +357,7 @@ footer a{
     }
 
 }
-
+/* for tablets and big smartphones */
 @media screen and (max-width:780px) {
     #player-status{
         right: -0.7rem;
@@ -371,7 +371,7 @@ footer a{
     }
     
 }
-
+/* smartphones average */
 @media screen and (max-width:450px) {
     .box{
         width: 99%;
@@ -405,6 +405,8 @@ footer a{
     }
     
 }
+
+/* smaller smartphones screens */
 
 @media screen and (max-width:380px) {
     #player-status{
@@ -442,12 +444,3 @@ footer a{
         margin-left: 33.33%;
     }
 }
-/*
-@media screen and (max-width: 321px) {
-    .stage{
-        width: 50px;
-        height: 50px;
-        font-size: 1.8rem;
-    }
-}
-*/
