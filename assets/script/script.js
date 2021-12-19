@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function(){
  * @param {string of player name} name 
  */
 function startGame(name){
+    document.getElementById('footer-text').style.marginTop = '8rem';
     document.getElementById('player-status').classList.remove('hidden');
     document.querySelector('.game-area').style.height = '40vh';
     var score = 0;

@@ -331,7 +331,7 @@ footer a{
     color: #fff;
     font-size: 150%;
 }
-footer p{
+#footer-text{
     margin-top:0rem;
     
 }
@@ -381,6 +381,7 @@ footer p{
     }
     #quest-para{
         font-size: 75%;
+        
     }
     .stage{
         width: 60px;
@@ -392,6 +393,9 @@ footer p{
     }
     #player-status{
         width: 9.8rem;
+    }
+    #enter-data{
+        max-height: 212px;
     }
     .tutorial-btn{
         font-size: 80%;
@@ -420,6 +424,9 @@ footer p{
         width: 50px;
         height: 50px;
         font-size: 1.8rem;
+    }
+    #enter-data{
+        max-height: 247px;
     }
     .progress-area{
         margin-bottom: 0;

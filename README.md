@@ -94,7 +94,7 @@ This area is where all the information and the questions are displayed for the u
 
 ![Game Area](/docs/game_area.png)
 
-### 2.2 Buttons
+### 2.1.0 Buttons
 All the buttons of the game area have a transparent background and a neon pink border, a pseudo class hover and also cursor change to make it clear that is a button and can be clicked.
 
 ![Buttons image](/docs/play_button.png)
@@ -106,51 +106,64 @@ All the buttons of the game area have a transparent background and a neon pink b
 ![Play Again](/docs/play_again.png)
 * Play Again button hover effect
 
-### 2.3 Input Area
+### 2.1.1 Input Area
 As the page is loaded a box will appear on the asking the player to enter with the name to start to play the game or can be directed to the tutorial and later start the game.
 
 ![Input area](/docs/input_area.png)
 
-### 2.4 Tutorial
+### 2.1.2 Tutorial
 Simple paragraph explaining the basics of the game
 
 ![tutorial](/docs/tutorial.png)
 
-### 2.5 Stage title and question
+### 2.1.3 Stage title and question
 The stage title holds the name of the stage that the player currently is, also have the same colour od the respective stage icon.
 The questions are displayed in white colour to make contrast with the background to provide a good readable text. Some important words are displayed in different colours to highlight it in the question.
 
 ![question sample](/docs/question.png)
 
-### 2.5 Right Answer
+### 2.1.4 Right Answer
 Display a green right check icon image
 
 ![right answer](/docs/right_answer.png)
 
-### 2.6 Wrong Answer
+### 2.1.5 Wrong Answer
 Display a red wrong check icon image and also a small text with the correct answer
 
 ![wrong answer](/docs/wrong_answer.png)
 
-### 2.7 Stage Transfer
+### 2.1.6 Stage Transfer
 Display a message to let the player know the current stage is over so when the player is ready will move to the next one, using the **Next** button.
 
 ![transfering stage](/docs/stage_transfer.png)
 
-### 2.8 Player Status
+### 2.1.7 Player Status
 This area holds the player’s information such as name, the number of lives (displayed as a heart icon) and the current score. The display is updated every time there is a change on lives or score.
 
 ![player status](/docs/player_status.png)
 
-### 2.9 Running out of Lives
+### 2.1.8 Running out of Lives
 As the game rule the player has three lives on the game start, every wrong question will cost one live, if the player has no live left the game activate the game over and will display a message and ask if the user want to play again.
 
 ![gameover](/docs/gameover.png)
 
-### 2.10 The Endgame
+### 2.1.9 The Endgame
 If the player passes all the stages without loosing all the lives a message appears to congratulate the player and also on the player status can see the final score. The player also has an option to play again if it wanted
 
 ![endgame](/docs/endgame.png)
+
+## 2.2 Multiple Choice Area
+
+Every question has four possible answers, they are displayed on the but-tons at the multiple choice area. The buttons have a linear shading on the background and display a pink border when hovered over. This area is hidden when the game is not expecting the player insert a question to avoid been clicked and generate bugs on the game progress.
+
+![multple choice buttons](/docs/answer_buttons.png)
+
+## 2.3 Footer
+
+By the bottom of the website a simple paragraph is displayed as footer featuring information about the developer and a external link for my **GitHub** profile.
+
+![footer](/docs/footer.png)
+
 
 
 
