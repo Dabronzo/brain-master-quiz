@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function(){
 function startGame(name){
     document.getElementById('footer-text').style.marginTop = '8rem';
     document.getElementById('player-status').classList.remove('hidden');
-    document.querySelector('.game-area').style.height = '40vh';
     var score = 0;
     var lives = 3;
     var counter = 0;
@@ -34,6 +33,13 @@ function startGame(name){
     var nextButton = document.getElementById('next');
     var playerName = name;
     var playAgain = document.getElementById('play-again');
+
+    var screen = window.matchMedia("(max-width: 769px)");
+    if(screen.matches){
+        document.querySelector('.game-area').style.height = '64vh';
+    } else{
+        document.querySelector('.game-area').style.height = '40vh';
+    }
 
     //initial setup for the music stage style
     stageIcon.classList.add('music-on');
