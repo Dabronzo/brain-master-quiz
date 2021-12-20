@@ -34,7 +34,7 @@ function startGame(name){
     var playerName = name;
     var playAgain = document.getElementById('play-again');
 
-    var screen = window.matchMedia("(max-width: 769px)");
+    var screen = window.matchMedia("(max-width: 649px)");
     if(screen.matches){
         document.querySelector('.game-area').style.height = '64vh';
     } else{

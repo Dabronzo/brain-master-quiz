@@ -371,7 +371,7 @@ footer a{
     }
     
 }
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 649px) {
     .stage{
         width: 60px;
         height: 60px;
